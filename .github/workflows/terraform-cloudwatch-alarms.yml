@@ -10,7 +10,7 @@ on:
 
 jobs:
   terraform-cloudwatch-alarms:
-    uses: https://github.com/ministryofjustice/operations-engineering/.github/workflows/reusable-workflow-terraform.yml
+    uses: ministryofjustice/operations-engineering/.github/workflows/reusable-workflow-terraform.yml@main
     with:
       workflow_name: "cloudwatch-alarms"
       path: "."
