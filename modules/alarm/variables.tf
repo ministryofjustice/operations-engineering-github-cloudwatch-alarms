@@ -8,11 +8,6 @@ variable "alarm_description" {
   description = "purpose of alarm"
 }
 
-variable "metric_filter_pattern" {
-  type = string
-  description = "pattern for CloudWatch metric filter"
-}
-
 variable "period" {
   type = number
   description = "period over which CLoudWatch will aggregate results"
@@ -28,5 +23,24 @@ variable "threshold" {
 variable "sns_topic_arn" {
   type = string
   description = "arn for sns topic"
+}
+
+variable "metric_filter_pattern" {
+  type = object({
+    usernames_equal_to   = list(string)
+    usernames_not_equal_to = list(string)
+    repositories = list(string)
+    events      = list(string)
+    organisations = list(string)
+  })
+
+  default = {
+    usernames = []
+    repositories = []
+    events = []
+    organisations = []
+  }
+
+  description = "filter pattern used to create metric"
 }
 
