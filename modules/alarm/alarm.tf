@@ -16,7 +16,7 @@ resource "aws_cloudwatch_log_metric_filter" "levgorbunov1_cancel_workflow_filter
   name           = var.metric_name
   log_group_name = data.aws_cloudwatch_log_group.github_events_log_group.name
 
-  pattern = "{ ${locals.concatenated_filters} }"
+  pattern = "{ ${local.concatenated_filters} }"
 
   metric_transformation {
     name      = var.metric_name
