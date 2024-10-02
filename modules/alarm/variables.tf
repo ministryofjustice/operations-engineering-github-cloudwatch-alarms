@@ -27,20 +27,12 @@ variable "sns_topic_arn" {
 
 variable "metric_filter_pattern" {
   type = object({
-    usernames_equal_to    = list(string)
-    usernames_not_equal_to = list(string)
-    repositories          = list(string)
-    events                = list(string)
-    organisations         = list(string)
+    usernames_equal_to    = optional(list(string), [])
+    usernames_not_equal_to = optional(list(string), [])
+    repositories          = optional(list(string), [])
+    events                = optional(list(string), [])
+    organisations         = optional(list(string), [])
   })
-
-  default = {
-    usernames_equal_to    = []
-    usernames_not_equal_to = []
-    repositories          = []
-    events                = []
-    organisations         = []
-  }
 
   description = "Filter pattern used to create metric"
 }
