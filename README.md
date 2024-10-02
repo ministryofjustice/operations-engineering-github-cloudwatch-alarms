@@ -41,7 +41,7 @@ module "my_alarm" {
 | ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
 | sns_topic_arn | SNS topic linked to the CloudWatch alarm | true | N/A |
 | alarm_description | Purpose of alarm | true | N/A |
-| metric_name | name of CloudWatch metric to be collected | true | N/A |
+| metric_name | Name of CloudWatch metric to be collected | true | N/A |
 | metric_filter_pattern | A map, representing the metric filter, used to create your CloudWatch metric:<pre>metric_filter_pattern = {<br>&nbsp;usernames_equal_to = []<br>&nbsp;usernames_not_equal_to = []<br>&nbsp;repositories = []<br>&nbsp;events = []<br>&nbsp;organisations = []<br>}</pre>All parameters are optional. `usernames_not_equal_to` will match all usernames that differ from those specified. `events` is a list of [GitHub audit log events](https://docs.github.com/en/enterprise-cloud@latest/admin/monitoring-activity-in-your-enterprise/reviewing-audit-logs-for-your-enterprise/audit-log-events-for-your-enterprise) that you would like to match | true | N/A |
-| period | Period over which CLoudWatch will aggregate results, in seconds | false | 60 |
-| threshold | alerting threshold | false | 0 |
+| period | Period over which CloudWatch will aggregate results, in seconds | false | 60 |
+| threshold | Alerting threshold | false | 0 |
