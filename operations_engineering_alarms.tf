@@ -32,3 +32,9 @@ resource "aws_cloudwatch_metric_alarm" "levgorbunov1_cancel_workflow_alarm" {
 
   alarm_actions = [aws_sns_topic.operations_engineering_github_alerts_topic.arn]
 }
+
+resource "aws_sns_topic_subscription" "email_subscription" {
+  topic_arn = aws_sns_topic.operations_engineering_github_alerts_topic.arn
+  protocol  = "email"
+  endpoint  = "levgorbunov1@digital.justice.gov.uk"
+}
