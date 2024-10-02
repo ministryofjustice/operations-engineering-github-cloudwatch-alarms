@@ -3,11 +3,6 @@ variable "metric_name" {
   description = "name of metric on which alarm is based"
 }
 
-variable "alarm_name" {
-  type = string
-  description = "name of alarm"
-}
-
 variable "alarm_description" {
   type = string
   description = "purpose of alarm"
