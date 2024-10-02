@@ -35,11 +35,11 @@ variable "metric_filter_pattern" {
   })
 
   default = {
-    usernames_equal_to = []
-    usernames_not_equal_to = []
-    repositories = []
-    events = []
-    organisations = []
+    usernames_equal_to = null
+    usernames_not_equal_to = null
+    repositories = null
+    events = null
+    organisations = null
   }
 
   description = "filter pattern used to create metric"
