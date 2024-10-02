@@ -11,10 +11,6 @@ resource "aws_cloudwatch_log_metric_filter" "levgorbunov1_cancel_workflow_filter
   }
 }
 
-resource "aws_sns_topic" "operations_engineering_github_alerts_topic" {
-  name = "${var.team}-github-alerts"
-}
-
 resource "aws_cloudwatch_metric_alarm" "levgorbunov1_cancel_workflow_alarm" {
   alarm_name        = "${var.metric_name}Alarm"
   alarm_description = var.alarm_description
@@ -28,15 +24,5 @@ resource "aws_cloudwatch_metric_alarm" "levgorbunov1_cancel_workflow_alarm" {
   statistic           = "Sum"
   threshold           = var.threshold
 
-  alarm_actions = [aws_sns_topic.operations_engineering_github_alerts_topic.arn]
-
-  depends_on = [aws_sns_topic.operations_engineering_github_alerts_topic]
-}
-
-resource "aws_sns_topic_subscription" "email_subscription" {
-  for_each = toset(var.subscribers)
-
-  topic_arn = aws_sns_topic.operations_engineering_github_alerts_topic.arn
-  protocol  = "email"
-  endpoint  = each.value
+  alarm_actions = [var.sns_topic_arn]
 }

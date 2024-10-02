@@ -13,11 +13,6 @@ variable "metric_filter_pattern" {
   description = "pattern for CloudWatch metric filter"
 }
 
-variable "team" {
-  type = string
-  description = "team associated with alarms"
-}
-
 variable "period" {
   type = number
   description = "period over which CLoudWatch will aggregate results"
@@ -30,10 +25,8 @@ variable "threshold" {
   default = 0
 }
 
-variable "subscribers" {
-  type = list(string)
-  description = "email subscribers to sns topic"
+variable "sns_topic_arn" {
+  type = string
+  description = "arn for sns topic"
 }
-
-
 
