@@ -14,11 +14,11 @@ module "unauthorised_users_modify_repository_settings_alarm" {
   metric_name           = "UnathorisedUsersModifyRepositorySettingsEvents"
   metric_filter_pattern = <<EOF
 {
-  ($.eventName = "repo.access") || ($.eventName = "repo.add_member") || ($.eventName = "repo.change_merge_setting")
+  ($.eventName = "repo.access" || $.eventName = "repo.add_member" || $.eventName = "repo.change_merge_setting")
   && 
-  ($.userIdentity.principalId != "testuser1") 
+  $.userIdentity.principalId != "testuser1"
   &&
-  ($.userIdentity.details.Repository= "ministryofjustice/operations-engineering-github-cloudwatch-alarms") 
+  $.userIdentity.details.Repository= "ministryofjustice/operations-engineering-github-cloudwatch-alarms" 
 }
 EOF
   alarm_description     = "Alarm for when any user other than testuser1 modifies the settings of ministryofjustice/operations-engineering-github-cloudwatch-alarms repository"
