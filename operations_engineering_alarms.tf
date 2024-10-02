@@ -21,5 +21,5 @@ module "unauthorised_users_modify_repository_settings_alarm" {
   ($.userIdentity.details.Repository= "ministryofjustice/operations-engineering-github-cloudwatch-alarms") 
 }
 EOF
-  alarm_description     = "Alarm for when user levgorbunov1 cancels any GitHub Actions workflow"
+  alarm_description     = "Alarm for when any user other than testuser1 modifies the settings of ministryofjustice/operations-engineering-github-cloudwatch-alarms repository"
 }
