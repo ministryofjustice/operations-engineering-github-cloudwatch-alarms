@@ -35,7 +35,8 @@ variable "metric_filter_pattern" {
   })
 
   default = {
-    usernames = []
+    usernames_equal_to = []
+    usernames_not_equal_to = []
     repositories = []
     events = []
     organisations = []
