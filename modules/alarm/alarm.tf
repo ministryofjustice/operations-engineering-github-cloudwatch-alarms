@@ -1,7 +1,7 @@
 locals {
   filters = [
     "(${join(" || ", formatlist("$.userIdentity.principalId = \"%s\"", var.metric_filter_pattern.usernames_equal_to))})",
-    "(${join(" || ", formatlist("$.userIdentity.principalId = \"%s\"", var.metric_filter_pattern.usernames_not_equal_to))})",
+    "(${join(" || ", formatlist("$.userIdentity.principalId != \"%s\"", var.metric_filter_pattern.usernames_not_equal_to))})",
     "(${join(" || ", formatlist("$.eventName = \"%s\"", var.metric_filter_pattern.events))})",
     "(${join(" || ", formatlist("$.userIdentity.details.Repository = \"%s\"", var.metric_filter_pattern.repositories))})",
     "(${join(" || ", formatlist("$.userIdentity.details.GitHubOrganization = \"%s\"", var.metric_filter_pattern.organisations))})"
