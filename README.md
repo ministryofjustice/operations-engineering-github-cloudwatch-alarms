@@ -19,7 +19,7 @@ module "my_team_topic" {
 
 ## Creating an alarm
 
-To create a new alarm, create a new Terraform file in the root directory called `my_team.tf`, if it doesn't already exist. Create a new alarm by adding the folloewing to `my_team.tf`:
+To create a new alarm, create a new Terraform file in the root directory called `my_team.tf`, if it doesn't already exist. Create a new alarm by adding the following to `my_team.tf`:
 
 ```
 module "my_alarm" {
