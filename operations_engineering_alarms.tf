@@ -12,7 +12,7 @@ module "levgorbunov1_cancel_workflow_alarm" {
   }
 }
 
-module "unauthorised_users_modify_repository_settings_alarm" {
+module "unauthorised_users_modify_repository_settings_mod_platform_alarm" {
   source = "./modules/alarm"
 
   sns_topic_arn = module.operations_engineering_topic.sns_topic_arn
