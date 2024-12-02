@@ -7,7 +7,7 @@ module "unauthorised_users_modify_repository_settings_alarm" {
 
   metric_name = "UnathorisedUsersModifyRepositorySettingsEvents"
   metric_filter_pattern = {
-    repositories           = ["ministryofjustice/modernisation-platform"]
-    events                 = ["repo.access", "repo.add_member", "repo.change_merge_setting"]
+    repositories = ["ministryofjustice/modernisation-platform"]
+    events       = ["repo.access", "repo.add_member", "repo.change_merge_setting"]
   }
 }
