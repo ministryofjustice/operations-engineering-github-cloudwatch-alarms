@@ -1,4 +1,4 @@
-module "unauthorised_users_modify_repository_settings_alarm" {
+module "unauthorised_users_modify_repository_settings_mod_platform_alarm" {
   source = "./modules/alarm"
 
   sns_topic_arn = module.modernisation_platform_topic.sns_topic_arn
