@@ -11,3 +11,4 @@ module "unauthorised_users_modify_repository_settings_alarm" {
     events                 = ["repo.access", "repo.add_member", "repo.change_merge_setting"]
   }
 }
+
