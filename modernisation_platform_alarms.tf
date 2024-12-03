@@ -149,7 +149,7 @@ variable "repositories" {
 
 # Local variables to chunk repositories and events
 locals {
-  chunked_repositories = chunklist(var.repositories, 10) # Chunk repositories into groups of 10
+  chunked_repositories = chunklist(var.repositories, 10)      # Chunk repositories into groups of 10
   chunked_events       = chunklist(var.repository_events, 50) # Chunk events into groups of 50
 }
 
