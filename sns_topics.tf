@@ -9,6 +9,5 @@ module "modernisation_platform_topic" {
   source = "./modules/sns_topic"
 
   team        = "modernisation-platform"
-  subscribers = ["modernisation-platform@digital.justice.gov.uk"]
+  subscribers = ["modernisation-platform@digital.justice.gov.uk", "kudzai.mtoko@digital.justice.gov.uk"]
 }
-
