@@ -1,3 +1,4 @@
+# Variable to hold all repository events
 variable "repository_events" {
   type = list(string)
   default = [
@@ -117,14 +118,12 @@ variable "repository_events" {
   ]
 }
 
-data "aws_cloudwatch_log_group" "github_events_log_group" {
-  name = "/aws/lambda/GitHubIngestFunction"
-}
-
+# Local variable to split events into manageable chunks
 locals {
-  chunked_events = chunklist(var.repository_events, 50) # Split events into manageable chunks
+  chunked_events = chunklist(var.repository_events, 50) # Adjust chunk size as needed
 }
 
+# Dynamically generate modules for each chunk of events
 module "unauthorised_users_modify_repository_settings_mod_platform_alarm" {
   for_each = tomap({ for i, chunk in local.chunked_events : "part${i + 1}" => chunk })
 
