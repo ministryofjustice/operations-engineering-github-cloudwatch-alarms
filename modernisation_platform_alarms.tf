@@ -7,7 +7,31 @@ module "unauthorised_users_modify_repository_settings_mod_platform_alarm" {
 
   metric_name = "UnathorisedUsersModifyRepositorySettingsEventsModPlatform"
   metric_filter_pattern = {
-    repositories = ["ministryofjustice/modernisation-platform", "ministryofjustice/modernisation-platform-terraform-ec2-instance"]
+
+    repositories = [
+      "ministryofjustice/modernisation-platform",
+      "ministryofjustice/modernisation-platform-terraform-ec2-instance",
+      "ministryofjustice/modernisation-platform-environments",
+      "ministryofjustice/modernisation-platform-ami-builds",
+      "ministryofjustice/modernisation-platform-configuration-management",
+      "ministryofjustice/modernisation-platform-terraform-module-template",
+      "ministryofjustice/modernisation-platform-terraform-bastion-linux",
+      "ministryofjustice/modernisation-platform-terraform-ecs-cluster",
+      "ministryofjustice/modernisation-platform-terraform-s3-bucket",
+      "ministryofjustice/modernisation-platform-terraform-aws-vm-import",
+      "ministryofjustice/modernisation-platform-terraform-pagerduty-integration",
+      "ministryofjustice/modernisation-platform-terraform-loadbalancer",
+      "modernisation-platform-terraform-ssm-patching",
+      "modernisation-platform-terraform-ec2-instance",
+      "modernisation-platform-terraform-ec2-autoscaling-group",
+      "modernisation-platform-terraform-lambda-function",
+      "ministryofjustice/modernisation-platform-terraform-baselines",
+      "modernisation-platform-terraform-cross-account-access",
+      "ministryofjustice/modernisation-platform-terraform-environments",
+      "ministryofjustice/modernisation-platform-terraform-iam-superadmins",
+      "ministryofjustice/modernisation-platform-terraform-member-vpc",
+    "ministryofjustice/modernisation-platform-github-oidc-provider"]
+
     events = [
       "repo.access",
       "repo.add_member",
