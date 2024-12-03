@@ -1,4 +1,5 @@
-# Variable to hold all repository events
+#  AWS has set a pattern length limitation so that CloudWatch log metric filter exceeds does not exceed 1024-character. To bypass this i used variables and chunklists
+
 variable "repository_events" {
   type = list(string)
   default = [
@@ -118,7 +119,6 @@ variable "repository_events" {
   ]
 }
 
-# Define the list of repositories
 variable "repositories" {
   type = list(string)
   default = [
@@ -153,7 +153,7 @@ locals {
   chunked_events       = chunklist(var.repository_events, 50) # Chunk events into groups of 50
 }
 
-# Create a module instance for each repository chunk
+# Code to create a module instance for each repository chunk
 module "unauthorised_users_modify_repository_settings_mod_platform_alarm" {
   for_each = tomap({ for i, chunk in local.chunked_repositories : "repo_part${i + 1}" => chunk })
 
