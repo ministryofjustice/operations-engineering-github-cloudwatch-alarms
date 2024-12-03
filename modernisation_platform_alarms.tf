@@ -1,17 +1,7 @@
-module "unauthorised_users_modify_repository_settings_mod_platform_alarm" {
-  source = "./modules/alarm"
-
-  sns_topic_arn = module.modernisation_platform_topic.sns_topic_arn
-
-  alarm_description = "Alarm for when any user modifies the settings of ministryofjustice/modernisation-platform repository"
-
-  metric_name = "UnathorisedUsersModifyRepositorySettingsEventsModPlatform"
-  metric_filter_pattern = {
-
-    repositories = ["ministryofjustice/modernisation-platform"]
-
-    events = [
-      "repo.access",
+variable "repository_events" {
+  type = list(string)
+  default = [
+    "repo.access",
       "repo.add_member",
       "repo.change_merge_setting",
       "repo.actions_enabled",
@@ -124,7 +114,32 @@ module "unauthorised_users_modify_repository_settings_mod_platform_alarm" {
       "private_repository_forking.enable",
       "dependabot_alerts.disable",
       "dependabot_alerts.enable"
-    ]
+  ]
+}
+
+data "aws_cloudwatch_log_group" "github_events_log_group" {
+  name = "/aws/lambda/GitHubIngestFunction" # Log group name provided
+}
+
+locals {
+  chunked_events = chunklist(var.repository_events, 50) # Split events into manageable chunks
+}
+
+module "unauthorised_users_modify_repository_settings_mod_platform_alarm" {
+  for_each = tomap({ for i, chunk in local.chunked_events : "part${i + 1}" => chunk })
+
+  source = "./modules/alarm"
+
+  sns_topic_arn     = module.modernisation_platform_topic.sns_topic_arn
+  alarm_description = "Alarm for when any user modifies the settings of ministryofjustice/modernisation-platform repository (Part ${each.key})"
+
+  metric_name = "UnauthorisedUsersModifyRepositorySettingsEventsModPlatform_${each.key}"
+  metric_filter_pattern = {
+    repositories = ["ministryofjustice/modernisation-platform"]
+    events       = each.value
   }
 }
+
+
+
 
