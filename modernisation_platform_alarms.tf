@@ -134,11 +134,11 @@ locals {
 
 # Separate module for each event group
 module "unauthorised_users_modify_repository_settings_alarms" {
-  source         = "./modules/alarm"
-  count          = length(local.event_groups)
-  sns_topic_arn  = module.modernisation_platform_topic.sns_topic_arn
+  source            = "./modules/alarm"
+  count             = length(local.event_groups)
+  sns_topic_arn     = module.modernisation_platform_topic.sns_topic_arn
   alarm_description = "Alarm for unauthorised repository settings modification - Group ${count.index + 1}"
-  metric_name    = "UnauthorisedRepoSettingsModPlatformGroup${count.index + 1}"
+  metric_name       = "UnauthorisedRepoSettingsModPlatformGroup${count.index + 1}"
   metric_filter_pattern = {
     repositories = ["ministryofjustice/modernisation-platform-github-oidc-provider"]
     events       = local.event_groups[count.index]
