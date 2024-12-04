@@ -1,7 +1,8 @@
+# variables.tf
 variable "unauthorised_event_patterns" {
   description = "List of unauthorised event patterns to monitor"
   type        = list(string)
-  default = [
+  default     = [
     "repo.access",
     "repo.add_member",
     "repo.change_merge_setting",
@@ -26,22 +27,26 @@ variable "group_size" {
   default     = 20
 }
 
+# locals.tf
 locals {
   event_groups = chunklist(var.unauthorised_event_patterns, var.group_size)
+  metric_names = [for i in range(length(local.event_groups)) : "UnauthorisedRepoSettingsGroup${i + 1}"]
 }
 
+# modules.tf (Creating metric filters with a module for each group)
 module "unauthorised_users_modify_repository_settings_alarms" {
-  source            = "./modules/alarm"
-  count             = length(local.event_groups)
-  sns_topic_arn     = module.modernisation_platform_topic.sns_topic_arn
+  source         = "./modules/alarm"
+  count          = length(local.event_groups)
+  sns_topic_arn  = module.modernisation_platform_topic.sns_topic_arn
   alarm_description = "Alarm for unauthorised repository settings modification - Group ${count.index + 1}"
-  metric_name       = "UnauthorisedRepoSettingsGroup${count.index + 1}"
+  metric_name    = local.metric_names[count.index]
   metric_filter_pattern = {
     repositories = ["ministryofjustice/modernisation-platform-github-oidc-provider"]
     events       = local.event_groups[count.index]
   }
 }
 
+# aws_cloudwatch_metric_alarm.tf (Creating alarms for each metric filter)
 resource "aws_cloudwatch_metric_alarm" "unauthorised_users_modify_repository_settings" {
   count = length(local.event_groups)
 
@@ -49,10 +54,11 @@ resource "aws_cloudwatch_metric_alarm" "unauthorised_users_modify_repository_set
   alarm_description   = "Alarm for unauthorised repository settings modification - Group ${count.index + 1}"
   comparison_operator = "GreaterThanOrEqualToThreshold"
   evaluation_periods  = 1
-  metric_name         = module.unauthorised_users_modify_repository_settings_alarms[count.index].metric_name
+  metric_name         = local.metric_names[count.index]
   namespace           = "CustomMetrics"
   period              = 300
   statistic           = "Sum"
   threshold           = 1
   alarm_actions       = [module.modernisation_platform_topic.sns_topic_arn]
 }
+
