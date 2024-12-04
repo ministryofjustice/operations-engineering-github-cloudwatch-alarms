@@ -1,7 +1,7 @@
-#  AWS has set a pattern length limitation so that CloudWatch log metric filter exceeds does not exceed 1024-character. To bypass this i used variables and chunklists
-
-variable "repository_events" {
-  type = list(string)
+# variables.tf
+variable "unauthorised_event_patterns" {
+  description = "List of unauthorised event patterns to monitor"
+  type        = list(string)
   default = [
     "repo.access",
     "repo.add_member",
@@ -116,59 +116,53 @@ variable "repository_events" {
     "private_repository_forking.enable",
     "dependabot_alerts.disable",
     "dependabot_alerts.enable"
+
   ]
 }
 
-variable "repositories" {
-  type = list(string)
-  default = [
-    "ministryofjustice/modernisation-platform",
-    "ministryofjustice/modernisation-platform-terraform-ec2-instance",
-    "ministryofjustice/modernisation-platform-environments",
-    "ministryofjustice/modernisation-platform-ami-builds",
-    "ministryofjustice/modernisation-platform-configuration-management",
-    "ministryofjustice/modernisation-platform-terraform-module-template",
-    "ministryofjustice/modernisation-platform-terraform-bastion-linux",
-    "ministryofjustice/modernisation-platform-terraform-ecs-cluster",
-    "ministryofjustice/modernisation-platform-terraform-s3-bucket",
-    "ministryofjustice/modernisation-platform-terraform-aws-vm-import",
-    "ministryofjustice/modernisation-platform-terraform-pagerduty-integration",
-    "ministryofjustice/modernisation-platform-terraform-loadbalancer",
-    "modernisation-platform-terraform-ssm-patching",
-    "modernisation-platform-terraform-ec2-instance",
-    "modernisation-platform-terraform-ec2-autoscaling-group",
-    "modernisation-platform-terraform-lambda-function",
-    "ministryofjustice/modernisation-platform-terraform-baselines",
-    "modernisation-platform-terraform-cross-account-access",
-    "ministryofjustice/modernisation-platform-terraform-environments",
-    "ministryofjustice/modernisation-platform-terraform-iam-superadmins",
-    "ministryofjustice/modernisation-platform-terraform-member-vpc",
-    "ministryofjustice/modernisation-platform-github-oidc-provider"
-  ]
+variable "group_size" {
+  description = "Number of events in each group to stay within AWS limits"
+  type        = number
+  default     = 20
 }
 
-# Local variables to chunk repositories and events
+# locals.tf
 locals {
-  chunked_repositories = chunklist(var.repositories, 10)      # Chunk repositories into groups of 10
-  chunked_events       = chunklist(var.repository_events, 50) # Chunk events into groups of 50
+  # Split the events into groups to ensure each group is within AWS's limit
+  event_groups = chunklist(var.unauthorised_event_patterns, var.group_size)
+
+  # Define metric names for each group dynamically
+  metric_names = [
+    for index in range(length(local.event_groups)) :
+    "UnauthorisedRepoSettingsGroup${index + 1}"
+  ]
 }
 
-# Code to create a module instance for each repository chunk
-module "unauthorised_users_modify_repository_settings_mod_platform_alarm" {
-  for_each = tomap({ for i, chunk in local.chunked_repositories : "repo_part${i + 1}" => chunk })
-
-  source = "./modules/alarm"
-
+# Module for each group of events
+module "unauthorised_users_modify_repository_settings_alarms" {
+  source            = "./modules/alarm"
+  count             = length(local.event_groups)
   sns_topic_arn     = module.modernisation_platform_topic.sns_topic_arn
-  alarm_description = "Alarm for when any user modifies the settings of repositories in chunk ${each.key}"
-
-  metric_name = "UnauthorisedUsersModifyRepositorySettings_${each.key}"
+  alarm_description = "Alarm for unauthorised repository settings modification - Group ${count.index + 1}"
+  metric_name       = local.metric_names[count.index]
   metric_filter_pattern = {
-    repositories = each.value
-    events       = var.repository_events
+    repositories = ["ministryofjustice/modernisation-platform-github-oidc-provider"]
+    events       = local.event_groups[count.index]
   }
 }
 
+# Create a CloudWatch alarm for each metric group
+resource "aws_cloudwatch_metric_alarm" "unauthorised_users_modify_repository_settings" {
+  count = length(local.event_groups)
 
-
-
+  alarm_name          = "UnauthorisedRepoSettingsGroup${count.index + 1}"
+  alarm_description   = "Alarm for unauthorised repository settings modification - Group ${count.index + 1}"
+  comparison_operator = "GreaterThanOrEqualToThreshold"
+  evaluation_periods  = 1
+  metric_name         = local.metric_names[count.index]
+  namespace           = "CustomMetrics"
+  period              = 300
+  statistic           = "Sum"
+  threshold           = 1
+  alarm_actions       = [module.modernisation_platform_topic.sns_topic_arn]
+}
