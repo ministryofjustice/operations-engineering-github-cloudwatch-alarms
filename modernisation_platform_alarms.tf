@@ -11,7 +11,7 @@ module "unauthorised_users_modify_repository_settings_mod_platform_alarm" {
     repositories = ["ministryofjustice/modernisation-platform-terraform-ec2-instance"]
 
     events = [
-       # Branch Protection Rule Modifications
+      # Branch Protection Rule Modifications
       "protected_branch.update_signature_requirement_enforcement_level",
       "protected_branch.create",
       "protected_branch.destroy",
