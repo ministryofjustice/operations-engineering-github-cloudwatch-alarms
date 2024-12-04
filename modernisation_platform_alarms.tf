@@ -25,6 +25,13 @@ module "unauthorised_users_modify_repository_settings_mod_platform_alarm" {
       "protected_branch.update_required_approving_review_count",
       "protected_branch.update_required_status_checks_enforcement_level",
       "protected_branch.update_signature_requirement_enforcement_level",
+      "repo.add_member",
+      "repo.change_merge_setting",
+      "repo.remove_member",
+      "repo.rename",
+      "repo.transfer",
+      "repo.transfer_start",
+      "repo.update_default_branch"
 
     ]
   }
