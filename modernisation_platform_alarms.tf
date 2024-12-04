@@ -3,12 +3,12 @@
 ############################################
 
 # Branch Protection Rule Modifications
-module "unauthorized_users_modify_repository_settings_branch_protection" {
+module "unauthorized_users_modify_repository_settings_branch_protection_modernisation_platform" {
   source = "./modules/alarm"
 
   sns_topic_arn     = module.modernisation_platform_topic.sns_topic_arn
   alarm_description = "Alarm for branch protection rule modifications in the repository"
-  metric_name       = "BranchProtectionRuleModificationEvents"
+  metric_name       = "BranchProtectionRuleModificationEventsModernisationPlatform"
   metric_filter_pattern = {
     repositories = ["ministryofjustice/modernisation-platform"]
 
@@ -30,12 +30,12 @@ module "unauthorized_users_modify_repository_settings_branch_protection" {
 }
 
 # Repository Settings Changes
-module "unauthorized_users_modify_repository_settings_repo_changes" {
+module "unauthorized_users_modify_repository_settings_repo_changes_modernisation_platform" {
   source = "./modules/alarm"
 
   sns_topic_arn     = module.modernisation_platform_topic.sns_topic_arn
   alarm_description = "Alarm for repository settings changes in the repository"
-  metric_name       = "RepositorySettingsChangeEvents"
+  metric_name       = "RepositorySettingsChangeEventsModernisationPlatform"
   metric_filter_pattern = {
     repositories = ["ministryofjustice/modernisation-platform"]
 
@@ -52,12 +52,12 @@ module "unauthorized_users_modify_repository_settings_repo_changes" {
 }
 
 # Visibility and Access Control
-module "unauthorized_users_modify_repository_settings_visibility" {
+module "unauthorized_users_modify_repository_settings_visibility_modernisation_platform" {
   source = "./modules/alarm"
 
   sns_topic_arn     = module.modernisation_platform_topic.sns_topic_arn
   alarm_description = "Alarm for visibility and access control changes in the repository"
-  metric_name       = "VisibilityAccessControlChangeEvents"
+  metric_name       = "VisibilityAccessControlChangeEventsModernisationPlatform"
   metric_filter_pattern = {
     repositories = ["ministryofjustice/modernisation-platform"]
 
@@ -70,12 +70,12 @@ module "unauthorized_users_modify_repository_settings_visibility" {
 }
 
 # Security Scanning and Vulnerabilities
-module "unauthorized_users_modify_repository_settings_security" {
+module "unauthorized_users_modify_repository_settings_security_modernisation_platform" {
   source = "./modules/alarm"
 
   sns_topic_arn     = module.modernisation_platform_topic.sns_topic_arn
   alarm_description = "Alarm for security scanning and vulnerabilities changes in the repository"
-  metric_name       = "SecurityScanningVulnerabilitiesChangeEvents"
+  metric_name       = "SecurityScanningVulnerabilitiesChangeEventsModernisationPlatform"
   metric_filter_pattern = {
     repositories = ["ministryofjustice/modernisation-platform"]
 
@@ -94,12 +94,12 @@ module "unauthorized_users_modify_repository_settings_security" {
 }
 
 # Administrative Privileges
-module "unauthorized_users_modify_repository_settings_admin_privileges" {
+module "unauthorized_users_modify_repository_settings_admin_privileges_modernisation_platform" {
   source = "./modules/alarm"
 
   sns_topic_arn     = module.modernisation_platform_topic.sns_topic_arn
   alarm_description = "Alarm for administrative privilege changes in the repository"
-  metric_name       = "AdminPrivilegesChangeEvents"
+  metric_name       = "AdminPrivilegesChangeEventsModernisationPlatform"
   metric_filter_pattern = {
     repositories = ["ministryofjustice/modernisation-platform"]
 
@@ -114,12 +114,12 @@ module "unauthorized_users_modify_repository_settings_admin_privileges" {
 }
 
 # Audit Log Modifications
-module "unauthorized_users_modify_repository_settings_audit_log" {
+module "unauthorized_users_modify_repository_settings_audit_log_modernisation_platform" {
   source = "./modules/alarm"
 
   sns_topic_arn     = module.modernisation_platform_topic.sns_topic_arn
   alarm_description = "Alarm for audit log modifications in the repository"
-  metric_name       = "AuditLogModificationEvents"
+  metric_name       = "AuditLogModificationEventsModernisationPlatform"
   metric_filter_pattern = {
     repositories = ["ministryofjustice/modernisation-platform"]
 
@@ -136,12 +136,12 @@ module "unauthorized_users_modify_repository_settings_audit_log" {
 
 
 # Branch Protection Rule Modifications
-module "unauthorized_users_modify_repository_settings_branch_protection" {
+module "unauthorized_users_modify_repository_settings_branch_protection_modernisation_platform_terraform_ec2_instance" {
   source = "./modules/alarm"
 
   sns_topic_arn     = module.modernisation_platform_topic.sns_topic_arn
   alarm_description = "Alarm for branch protection rule modifications in the repository"
-  metric_name       = "BranchProtectionRuleModificationEvents"
+  metric_name       = "BranchProtectionRuleModificationEvents-modernisation-platform-terraform-ec2-instance"
   metric_filter_pattern = {
     repositories = ["ministryofjustice/modernisation-platform-terraform-ec2-instance"]
 
@@ -163,12 +163,12 @@ module "unauthorized_users_modify_repository_settings_branch_protection" {
 }
 
 # Repository Settings Changes
-module "unauthorized_users_modify_repository_settings_repo_changes" {
+module "unauthorized_users_modify_repository_settings_repo_changes_modernisation_platform_terraform_ec2_instance" {
   source = "./modules/alarm"
 
   sns_topic_arn     = module.modernisation_platform_topic.sns_topic_arn
   alarm_description = "Alarm for repository settings changes in the repository"
-  metric_name       = "RepositorySettingsChangeEvents"
+  metric_name       = "RepositorySettingsChangeEvents-modernisation-platform-terraform-ec2-instance"
   metric_filter_pattern = {
     repositories = ["ministryofjustice/modernisation-platform-terraform-ec2-instance"]
 
@@ -185,12 +185,12 @@ module "unauthorized_users_modify_repository_settings_repo_changes" {
 }
 
 # Visibility and Access Control
-module "unauthorized_users_modify_repository_settings_visibility" {
+module "unauthorized_users_modify_repository_settings_visibility_modernisation_platform_terraform_ec2_instance" {
   source = "./modules/alarm"
 
   sns_topic_arn     = module.modernisation_platform_topic.sns_topic_arn
   alarm_description = "Alarm for visibility and access control changes in the repository"
-  metric_name       = "VisibilityAccessControlChangeEvents"
+  metric_name       = "VisibilityAccessControlChangeEvents-modernisation-platform-terraform-ec2-instance"
   metric_filter_pattern = {
     repositories = ["ministryofjustice/modernisation-platform-terraform-ec2-instance"]
 
@@ -203,12 +203,12 @@ module "unauthorized_users_modify_repository_settings_visibility" {
 }
 
 # Security Scanning and Vulnerabilities
-module "unauthorized_users_modify_repository_settings_security" {
+module "unauthorized_users_modify_repository_settings_security_modernisation_platform_terraform_ec2_instance" {
   source = "./modules/alarm"
 
   sns_topic_arn     = module.modernisation_platform_topic.sns_topic_arn
   alarm_description = "Alarm for security scanning and vulnerabilities changes in the repository"
-  metric_name       = "SecurityScanningVulnerabilitiesChangeEvents"
+  metric_name       = "SecurityScanningVulnerabilitiesChangeEvents-modernisation-platform-terraform-ec2-instance"
   metric_filter_pattern = {
     repositories = ["ministryofjustice/modernisation-platform-terraform-ec2-instance"]
 
@@ -227,12 +227,12 @@ module "unauthorized_users_modify_repository_settings_security" {
 }
 
 # Administrative Privileges
-module "unauthorized_users_modify_repository_settings_admin_privileges" {
+module "unauthorized_users_modify_repository_settings_admin_privileges_modernisation_platform_terraform_ec2_instance" {
   source = "./modules/alarm"
 
   sns_topic_arn     = module.modernisation_platform_topic.sns_topic_arn
   alarm_description = "Alarm for administrative privilege changes in the repository"
-  metric_name       = "AdminPrivilegesChangeEvents"
+  metric_name       = "AdminPrivilegesChangeEvents-modernisation-platform-terraform-ec2-instance"
   metric_filter_pattern = {
     repositories = ["ministryofjustice/modernisation-platform-terraform-ec2-instance"]
 
@@ -247,12 +247,12 @@ module "unauthorized_users_modify_repository_settings_admin_privileges" {
 }
 
 # Audit Log Modifications
-module "unauthorized_users_modify_repository_settings_audit_log" {
+module "unauthorized_users_modify_repository_settings_audit_log_modernisation_platform_terraform_ec2_instance" {
   source = "./modules/alarm"
 
   sns_topic_arn     = module.modernisation_platform_topic.sns_topic_arn
   alarm_description = "Alarm for audit log modifications in the repository"
-  metric_name       = "AuditLogModificationEvents"
+  metric_name       = "AuditLogModificationEvents-modernisation-platform-terraform-ec2-instance"
   metric_filter_pattern = {
     repositories = ["ministryofjustice/modernisation-platform-terraform-ec2-instance"]
 
@@ -268,12 +268,12 @@ module "unauthorized_users_modify_repository_settings_audit_log" {
 #########################################################
 
 # Branch Protection Rule Modifications
-module "unauthorized_users_modify_repository_settings_branch_protection" {
+module "unauthorized_users_modify_repository_settings_branch_protection_modernisation_platform_environments" {
   source = "./modules/alarm"
 
   sns_topic_arn     = module.modernisation_platform_topic.sns_topic_arn
   alarm_description = "Alarm for branch protection rule modifications in the repository"
-  metric_name       = "BranchProtectionRuleModificationEvents"
+  metric_name       = "BranchProtectionRuleModificationEvents-modernisation-platform-environments"
   metric_filter_pattern = {
     repositories = ["ministryofjustice/modernisation-platform-environments"]
 
@@ -295,12 +295,12 @@ module "unauthorized_users_modify_repository_settings_branch_protection" {
 }
 
 # Repository Settings Changes
-module "unauthorized_users_modify_repository_settings_repo_changes" {
+module "unauthorized_users_modify_repository_settings_repo_changes_modernisation_platform_environments" {
   source = "./modules/alarm"
 
   sns_topic_arn     = module.modernisation_platform_topic.sns_topic_arn
   alarm_description = "Alarm for repository settings changes in the repository"
-  metric_name       = "RepositorySettingsChangeEvents"
+  metric_name       = "RepositorySettingsChangeEvents-modernisation-platform-environments"
   metric_filter_pattern = {
     repositories = ["ministryofjustice/modernisation-platform-environments"]
 
@@ -317,12 +317,12 @@ module "unauthorized_users_modify_repository_settings_repo_changes" {
 }
 
 # Visibility and Access Control
-module "unauthorized_users_modify_repository_settings_visibility" {
+module "unauthorized_users_modify_repository_settings_visibility_modernisation_platform_environments" {
   source = "./modules/alarm"
 
   sns_topic_arn     = module.modernisation_platform_topic.sns_topic_arn
   alarm_description = "Alarm for visibility and access control changes in the repository"
-  metric_name       = "VisibilityAccessControlChangeEvents"
+  metric_name       = "VisibilityAccessControlChangeEvents-modernisation-platform-environments"
   metric_filter_pattern = {
     repositories = ["ministryofjustice/modernisation-platform-environments"]
 
@@ -335,12 +335,12 @@ module "unauthorized_users_modify_repository_settings_visibility" {
 }
 
 # Security Scanning and Vulnerabilities
-module "unauthorized_users_modify_repository_settings_security" {
+module "unauthorized_users_modify_repository_settings_security_modernisation_platform_environments" {
   source = "./modules/alarm"
 
   sns_topic_arn     = module.modernisation_platform_topic.sns_topic_arn
   alarm_description = "Alarm for security scanning and vulnerabilities changes in the repository"
-  metric_name       = "SecurityScanningVulnerabilitiesChangeEvents"
+  metric_name       = "SecurityScanningVulnerabilitiesChangeEvents-modernisation-platform-environments"
   metric_filter_pattern = {
     repositories = ["ministryofjustice/modernisation-platform-environments"]
 
@@ -359,12 +359,12 @@ module "unauthorized_users_modify_repository_settings_security" {
 }
 
 # Administrative Privileges
-module "unauthorized_users_modify_repository_settings_admin_privileges" {
+module "unauthorized_users_modify_repository_settings_admin_privileges_modernisation_platform_environments" {
   source = "./modules/alarm"
 
   sns_topic_arn     = module.modernisation_platform_topic.sns_topic_arn
   alarm_description = "Alarm for administrative privilege changes in the repository"
-  metric_name       = "AdminPrivilegesChangeEvents"
+  metric_name       = "AdminPrivilegesChangeEvents-modernisation-platform-environments"
   metric_filter_pattern = {
     repositories = ["ministryofjustice/modernisation-platform-environments"]
 
@@ -379,12 +379,12 @@ module "unauthorized_users_modify_repository_settings_admin_privileges" {
 }
 
 # Audit Log Modifications
-module "unauthorized_users_modify_repository_settings_audit_log" {
+module "unauthorized_users_modify_repository_settings_audit_log_modernisation_platform_environments" {
   source = "./modules/alarm"
 
   sns_topic_arn     = module.modernisation_platform_topic.sns_topic_arn
   alarm_description = "Alarm for audit log modifications in the repository"
-  metric_name       = "AuditLogModificationEvents"
+  metric_name       = "AuditLogModificationEvents-modernisation-platform-environments"
   metric_filter_pattern = {
     repositories = ["ministryofjustice/modernisation-platform-environments"]
 
@@ -400,12 +400,12 @@ module "unauthorized_users_modify_repository_settings_audit_log" {
 #######################################################
 
 # Branch Protection Rule Modifications
-module "unauthorized_users_modify_repository_settings_branch_protection" {
+module "unauthorized_users_modify_repository_settings_branch_protection_modernisation_platform_ami_builds" {
   source = "./modules/alarm"
 
   sns_topic_arn     = module.modernisation_platform_topic.sns_topic_arn
   alarm_description = "Alarm for branch protection rule modifications in the repository"
-  metric_name       = "BranchProtectionRuleModificationEvents"
+  metric_name       = "BranchProtectionRuleModificationEvents-modernisation-platform-ami-builds"
   metric_filter_pattern = {
     repositories = ["ministryofjustice/modernisation-platform-ami-builds"]
 
@@ -427,12 +427,12 @@ module "unauthorized_users_modify_repository_settings_branch_protection" {
 }
 
 # Repository Settings Changes
-module "unauthorized_users_modify_repository_settings_repo_changes" {
+module "unauthorized_users_modify_repository_settings_repo_changes_modernisation_platform_ami_builds" {
   source = "./modules/alarm"
 
   sns_topic_arn     = module.modernisation_platform_topic.sns_topic_arn
   alarm_description = "Alarm for repository settings changes in the repository"
-  metric_name       = "RepositorySettingsChangeEvents"
+  metric_name       = "RepositorySettingsChangeEvents--modernisation-platform-ami-builds"
   metric_filter_pattern = {
     repositories = ["ministryofjustice/modernisation-platform-ami-builds"]
 
@@ -449,12 +449,12 @@ module "unauthorized_users_modify_repository_settings_repo_changes" {
 }
 
 # Visibility and Access Control
-module "unauthorized_users_modify_repository_settings_visibility" {
+module "unauthorized_users_modify_repository_settings_visibility_modernisation_platform_ami_builds" {
   source = "./modules/alarm"
 
   sns_topic_arn     = module.modernisation_platform_topic.sns_topic_arn
   alarm_description = "Alarm for visibility and access control changes in the repository"
-  metric_name       = "VisibilityAccessControlChangeEvents"
+  metric_name       = "VisibilityAccessControlChangeEvents--modernisation-platform-ami-builds"
   metric_filter_pattern = {
     repositories = ["ministryofjustice/modernisation-platform-ami-builds"]
 
@@ -467,12 +467,12 @@ module "unauthorized_users_modify_repository_settings_visibility" {
 }
 
 # Security Scanning and Vulnerabilities
-module "unauthorized_users_modify_repository_settings_security" {
+module "unauthorized_users_modify_repository_settings_security_modernisation_platform_ami_builds" {
   source = "./modules/alarm"
 
   sns_topic_arn     = module.modernisation_platform_topic.sns_topic_arn
   alarm_description = "Alarm for security scanning and vulnerabilities changes in the repository"
-  metric_name       = "SecurityScanningVulnerabilitiesChangeEvents"
+  metric_name       = "SecurityScanningVulnerabilitiesChangeEvents--modernisation-platform-ami-builds"
   metric_filter_pattern = {
     repositories = ["ministryofjustice/modernisation-platform-ami-builds"]
 
@@ -491,12 +491,12 @@ module "unauthorized_users_modify_repository_settings_security" {
 }
 
 # Administrative Privileges
-module "unauthorized_users_modify_repository_settings_admin_privileges" {
+module "unauthorized_users_modify_repository_settings_admin_privileges_modernisation_platform_ami_builds" {
   source = "./modules/alarm"
 
   sns_topic_arn     = module.modernisation_platform_topic.sns_topic_arn
   alarm_description = "Alarm for administrative privilege changes in the repository"
-  metric_name       = "AdminPrivilegesChangeEvents"
+  metric_name       = "AdminPrivilegesChangeEvents--modernisation-platform-ami-builds"
   metric_filter_pattern = {
     repositories = ["ministryofjustice/modernisation-platform-ami-builds"]
 
@@ -511,12 +511,12 @@ module "unauthorized_users_modify_repository_settings_admin_privileges" {
 }
 
 # Audit Log Modifications
-module "unauthorized_users_modify_repository_settings_audit_log" {
+module "unauthorized_users_modify_repository_settings_audit_log_modernisation_platform_ami_builds" {
   source = "./modules/alarm"
 
   sns_topic_arn     = module.modernisation_platform_topic.sns_topic_arn
   alarm_description = "Alarm for audit log modifications in the repository"
-  metric_name       = "AuditLogModificationEvents"
+  metric_name       = "AuditLogModificationEvents--modernisation-platform-ami-builds"
   metric_filter_pattern = {
     repositories = ["ministryofjustice/modernisation-platform-ami-builds"]
 
