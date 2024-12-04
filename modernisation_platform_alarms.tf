@@ -1,7 +1,7 @@
 variable "unauthorised_event_patterns" {
   description = "List of unauthorised event patterns to monitor"
   type        = list(string)
-  default     = [
+  default = [
     "repo.access",
     "repo.add_member",
     "repo.change_merge_setting",
@@ -31,11 +31,11 @@ locals {
 }
 
 module "unauthorised_users_modify_repository_settings_alarms" {
-  source         = "./modules/alarm"
-  count          = length(local.event_groups)
-  sns_topic_arn  = module.modernisation_platform_topic.sns_topic_arn
+  source            = "./modules/alarm"
+  count             = length(local.event_groups)
+  sns_topic_arn     = module.modernisation_platform_topic.sns_topic_arn
   alarm_description = "Alarm for unauthorised repository settings modification - Group ${count.index + 1}"
-  metric_name    = "UnauthorisedRepoSettingsGroup${count.index + 1}"
+  metric_name       = "UnauthorisedRepoSettingsGroup${count.index + 1}"
   metric_filter_pattern = {
     repositories = ["ministryofjustice/modernisation-platform-github-oidc-provider"]
     events       = local.event_groups[count.index]
