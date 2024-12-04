@@ -2,7 +2,7 @@
 variable "unauthorised_event_patterns" {
   description = "List of unauthorised event patterns to monitor"
   type        = list(string)
-  default     = [
+  default = [
     "repo.access",
     "repo.add_member",
     "repo.change_merge_setting",
@@ -29,24 +29,30 @@ variable "group_size" {
 
 # locals.tf
 locals {
+  # Split the events into groups to ensure each group is within AWS's limit
   event_groups = chunklist(var.unauthorised_event_patterns, var.group_size)
-  metric_names = [for i in range(length(local.event_groups)) : "UnauthorisedRepoSettingsGroup${i + 1}"]
+
+  # Define metric names for each group dynamically
+  metric_names = [
+    for index in range(length(local.event_groups)) :
+    "UnauthorisedRepoSettingsGroup${index + 1}"
+  ]
 }
 
-# modules.tf (Creating metric filters with a module for each group)
+# Module for each group of events
 module "unauthorised_users_modify_repository_settings_alarms" {
-  source         = "./modules/alarm"
-  count          = length(local.event_groups)
-  sns_topic_arn  = module.modernisation_platform_topic.sns_topic_arn
+  source            = "./modules/alarm"
+  count             = length(local.event_groups)
+  sns_topic_arn     = module.modernisation_platform_topic.sns_topic_arn
   alarm_description = "Alarm for unauthorised repository settings modification - Group ${count.index + 1}"
-  metric_name    = local.metric_names[count.index]
+  metric_name       = local.metric_names[count.index]
   metric_filter_pattern = {
     repositories = ["ministryofjustice/modernisation-platform-github-oidc-provider"]
     events       = local.event_groups[count.index]
   }
 }
 
-# aws_cloudwatch_metric_alarm.tf (Creating alarms for each metric filter)
+# Create a CloudWatch alarm for each metric group
 resource "aws_cloudwatch_metric_alarm" "unauthorised_users_modify_repository_settings" {
   count = length(local.event_groups)
 
@@ -61,4 +67,3 @@ resource "aws_cloudwatch_metric_alarm" "unauthorised_users_modify_repository_set
   threshold           = 1
   alarm_actions       = [module.modernisation_platform_topic.sns_topic_arn]
 }
-
