@@ -1194,7 +1194,7 @@ module "unauthorized_users_modify_repository_settings_audit_log_modernisation_pl
 ####################################################################
 
 # Branch Protection Rule Modifications
-module "unauthorized_users_modify_repository_settings_branch_protection_modernisation-platform-terraform-aws-vm-import" {
+module "unauthorized_users_modify_repository_settings_branch_protection_modernisation_platform_terraform_aws_vm_import" {
   source = "./modules/alarm"
 
   sns_topic_arn     = module.modernisation_platform_topic.sns_topic_arn
@@ -1221,7 +1221,7 @@ module "unauthorized_users_modify_repository_settings_branch_protection_modernis
 }
 
 # Repository Settings Changes
-module "unauthorized_users_modify_repository_settings_repo_changes_modernisation-platform-terraform-aws-vm-import " {
+module "unauthorized_users_modify_repository_settings_repo_changes_modernisation_platform_terraform_aws_vm_import" {
   source = "./modules/alarm"
 
   sns_topic_arn     = module.modernisation_platform_topic.sns_topic_arn
@@ -1243,7 +1243,7 @@ module "unauthorized_users_modify_repository_settings_repo_changes_modernisation
 }
 
 # Visibility and Access Control
-module "unauthorized_users_modify_repository_settings_visibility_modernisation-platform-terraform-aws-vm-import " {
+module "unauthorized_users_modify_repository_settings_visibility_modernisation_platform_terraform_aws_vm_import" {
   source = "./modules/alarm"
 
   sns_topic_arn     = module.modernisation_platform_topic.sns_topic_arn
@@ -1261,7 +1261,7 @@ module "unauthorized_users_modify_repository_settings_visibility_modernisation-p
 }
 
 # Security Scanning and Vulnerabilities
-module "unauthorized_users_modify_repository_settings_security_modernisation-platform-terraform-aws-vm-import " {
+module "unauthorized_users_modify_repository_settings_security_modernisation_platform_terraform_aws_vm_import" {
   source = "./modules/alarm"
 
   sns_topic_arn     = module.modernisation_platform_topic.sns_topic_arn
@@ -1285,7 +1285,7 @@ module "unauthorized_users_modify_repository_settings_security_modernisation-pla
 }
 
 # Administrative Privileges
-module "unauthorized_users_modify_repository_settings_admin_privileges_modernisation-platform-terraform-aws-vm-import " {
+module "unauthorized_users_modify_repository_settings_admin_privileges_modernisation_platform_terraform_aws_vm_import" {
   source = "./modules/alarm"
 
   sns_topic_arn     = module.modernisation_platform_topic.sns_topic_arn
@@ -1305,7 +1305,7 @@ module "unauthorized_users_modify_repository_settings_admin_privileges_modernisa
 }
 
 # Audit Log Modifications
-module "unauthorized_users_modify_repository_settings_audit_log_modernisation-platform-terraform-aws-vm-import " {
+module "unauthorized_users_modify_repository_settings_audit_log_modernisation_platform_terraform_aws_vm_import" {
   source = "./modules/alarm"
 
   sns_topic_arn     = module.modernisation_platform_topic.sns_topic_arn
