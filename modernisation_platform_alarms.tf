@@ -540,7 +540,7 @@ module "unauthorized_users_modify_repository_settings_branch_protection_modernis
   alarm_description = "Alarm for branch protection rule modifications in the repository"
   metric_name       = "BranchProtectionRuleModificationEvents-modernisation-platform-configuration-management"
   metric_filter_pattern = {
-    repositories = ["ministryofjustice/modernisation-platform-ami-builds"]
+    repositories = ["ministryofjustice/modernisation-platform-configuration-management"]
 
     events = [
       "protected_branch.create",
@@ -567,7 +567,7 @@ module "unauthorized_users_modify_repository_settings_repo_changes_modernisation
   alarm_description = "Alarm for repository settings changes in the repository"
   metric_name       = "RepositorySettingsChangeEvents-modernisation-platform-configuration-management"
   metric_filter_pattern = {
-    repositories = ["ministryofjustice/modernisation-platform-ami-builds"]
+    repositories = ["ministryofjustice/modernisation-platform-configuration-management"]
 
     events = [
       "repo.add_member",
@@ -589,7 +589,7 @@ module "unauthorized_users_modify_repository_settings_visibility_modernisation_p
   alarm_description = "Alarm for visibility and access control changes in the repository"
   metric_name       = "VisibilityAccessControlChangeEvents-modernisation-platform-configuration-management"
   metric_filter_pattern = {
-    repositories = ["ministryofjustice/modernisation-platform-ami-builds"]
+    repositories = ["ministryofjustice/modernisation-platform-configuration-management"]
 
     events = [
       "repository_visibility_change.disable",
@@ -607,7 +607,7 @@ module "unauthorized_users_modify_repository_settings_security_modernisation_pla
   alarm_description = "Alarm for security scanning and vulnerabilities changes in the repository"
   metric_name       = "SecurityScanningVulnerabilitiesChangeEvents-modernisation-platform-configuration-management"
   metric_filter_pattern = {
-    repositories = ["ministryofjustice/modernisation-platform-ami-builds"]
+    repositories = ["ministryofjustice/modernisation-platform-configuration-management"]
 
     events = [
       "repository_security_configuration.removed",
@@ -631,7 +631,7 @@ module "unauthorized_users_modify_repository_settings_admin_privileges_modernisa
   alarm_description = "Alarm for administrative privilege changes in the repository"
   metric_name       = "AdminPrivilegesChangeEvents-modernisation-platform-configuration-management"
   metric_filter_pattern = {
-    repositories = ["ministryofjustice/modernisation-platform-ami-builds"]
+    repositories = ["ministryofjustice/modernisation-platform-configuration-management"]
 
     events = [
       "business.add_admin",
@@ -651,7 +651,7 @@ module "unauthorized_users_modify_repository_settings_audit_log_modernisation_pl
   alarm_description = "Alarm for audit log modifications in the repository"
   metric_name       = "AuditLogModificationEvents-modernisation-platform-configuration-management"
   metric_filter_pattern = {
-    repositories = ["ministryofjustice/modernisation-platform-ami-builds"]
+    repositories = ["ministryofjustice/modernisation-platform-configuration-management"]
 
     events = [
       "audit_log_streaming.create",
@@ -673,7 +673,7 @@ module "unauthorized_users_modify_repository_settings_branch_protection_modernis
   alarm_description = "Alarm for branch protection rule modifications in the repository"
   metric_name       = "BranchProtectionRuleModificationEvents-modernisation-platform-terraform-module-template"
   metric_filter_pattern = {
-    repositories = ["ministryofjustice/modernisation-platform-ami-builds"]
+    repositories = ["ministryofjustice/modernisation-platform-terraform-module-template"]
 
     events = [
       "protected_branch.create",
@@ -700,7 +700,7 @@ module "unauthorized_users_modify_repository_settings_repo_changes_modernisation
   alarm_description = "Alarm for repository settings changes in the repository"
   metric_name       = "RepositorySettingsChangeEvents-modernisation-platform-terraform-module-template"
   metric_filter_pattern = {
-    repositories = ["ministryofjustice/modernisation-platform-ami-builds"]
+    repositories = ["ministryofjustice/modernisation-platform-terraform-module-template"]
 
     events = [
       "repo.add_member",
@@ -722,7 +722,7 @@ module "unauthorized_users_modify_repository_settings_visibility_modernisation_p
   alarm_description = "Alarm for visibility and access control changes in the repository"
   metric_name       = "VisibilityAccessControlChangeEvents-modernisation-platform-terraform-module-template"
   metric_filter_pattern = {
-    repositories = ["ministryofjustice/modernisation-platform-ami-builds"]
+    repositories = ["ministryofjustice/modernisation-platform-terraform-module-template"]
 
     events = [
       "repository_visibility_change.disable",
@@ -740,7 +740,7 @@ module "unauthorized_users_modify_repository_settings_security_modernisation_pla
   alarm_description = "Alarm for security scanning and vulnerabilities changes in the repository"
   metric_name       = "SecurityScanningVulnerabilitiesChangeEvents-modernisation-platform-terraform-module-template"
   metric_filter_pattern = {
-    repositories = ["ministryofjustice/modernisation-platform-ami-builds"]
+    repositories = ["ministryofjustice/modernisation-platform-terraform-module-template"]
 
     events = [
       "repository_security_configuration.removed",
@@ -764,7 +764,7 @@ module "unauthorized_users_modify_repository_settings_admin_privileges_modernisa
   alarm_description = "Alarm for administrative privilege changes in the repository"
   metric_name       = "AdminPrivilegesChangeEvents-modernisation-platform-terraform-module-template"
   metric_filter_pattern = {
-    repositories = ["ministryofjustice/modernisation-platform-ami-builds"]
+    repositories = ["ministryofjustice/modernisation-platform-terraform-module-template"]
 
     events = [
       "business.add_admin",
@@ -784,7 +784,7 @@ module "unauthorized_users_modify_repository_settings_audit_log_modernisation_pl
   alarm_description = "Alarm for audit log modifications in the repository"
   metric_name       = "AuditLogModificationEvents-modernisation-platform-terraform-module-template"
   metric_filter_pattern = {
-    repositories = ["ministryofjustice/modernisation-platform-ami-builds"]
+    repositories = ["ministryofjustice/modernisation-platform-terraform-module-template"]
 
     events = [
       "audit_log_streaming.create",
@@ -805,7 +805,7 @@ module "unauthorized_users_modify_repository_settings_branch_protection_modernis
   alarm_description = "Alarm for branch protection rule modifications in the repository"
   metric_name       = "BranchProtectionRuleModificationEvents-modernisation-platform-terraform-bastion-linux"
   metric_filter_pattern = {
-    repositories = ["ministryofjustice/modernisation-platform-ami-builds"]
+    repositories = ["ministryofjustice/modernisation-platform-terraform-bastion-linux"]
 
     events = [
       "protected_branch.create",
@@ -832,7 +832,7 @@ module "unauthorized_users_modify_repository_settings_repo_changes_modernisation
   alarm_description = "Alarm for repository settings changes in the repository"
   metric_name       = "RepositorySettingsChangeEvents-modernisation-platform-terraform-bastion-linux"
   metric_filter_pattern = {
-    repositories = ["ministryofjustice/modernisation-platform-ami-builds"]
+    repositories = ["ministryofjustice/modernisation-platform-terraform-bastion-linux"]
 
     events = [
       "repo.add_member",
@@ -854,7 +854,7 @@ module "unauthorized_users_modify_repository_settings_visibility_modernisation_p
   alarm_description = "Alarm for visibility and access control changes in the repository"
   metric_name       = "VisibilityAccessControlChangeEvents-modernisation-platform-terraform-bastion-linux"
   metric_filter_pattern = {
-    repositories = ["ministryofjustice/modernisation-platform-ami-builds"]
+    repositories = ["ministryofjustice/modernisation-platform-terraform-bastion-linux"]
 
     events = [
       "repository_visibility_change.disable",
@@ -872,7 +872,7 @@ module "unauthorized_users_modify_repository_settings_security_modernisation_pla
   alarm_description = "Alarm for security scanning and vulnerabilities changes in the repository"
   metric_name       = "SecurityScanningVulnerabilitiesChangeEvents-modernisation-platform-terraform-bastion-linux"
   metric_filter_pattern = {
-    repositories = ["ministryofjustice/modernisation-platform-ami-builds"]
+    repositories = ["ministryofjustice/modernisation-platform-terraform-bastion-linux"]
 
     events = [
       "repository_security_configuration.removed",
@@ -896,7 +896,7 @@ module "unauthorized_users_modify_repository_settings_admin_privileges_modernisa
   alarm_description = "Alarm for administrative privilege changes in the repository"
   metric_name       = "AdminPrivilegesChangeEvents-modernisation-platform-terraform-bastion-linux"
   metric_filter_pattern = {
-    repositories = ["ministryofjustice/modernisation-platform-ami-builds"]
+    repositories = ["ministryofjustice/modernisation-platform-terraform-bastion-linux"]
 
     events = [
       "business.add_admin",
@@ -916,7 +916,7 @@ module "unauthorized_users_modify_repository_settings_audit_log_modernisation_pl
   alarm_description = "Alarm for audit log modifications in the repository"
   metric_name       = "AuditLogModificationEvents-modernisation-platform-terraform-bastion-linux"
   metric_filter_pattern = {
-    repositories = ["ministryofjustice/modernisation-platform-ami-builds"]
+    repositories = ["ministryofjustice/modernisation-platform-terraform-bastion-linux"]
 
     events = [
       "audit_log_streaming.create",
@@ -937,7 +937,7 @@ module "unauthorized_users_modify_repository_settings_branch_protection_modernis
   alarm_description = "Alarm for branch protection rule modifications in the repository"
   metric_name       = "BranchProtectionRuleModificationEvents-modernisation-platform-terraform-ecs-cluster"
   metric_filter_pattern = {
-    repositories = ["ministryofjustice/modernisation-platform-ami-builds"]
+    repositories = ["ministryofjustice/modernisation-platform-terraform-ecs-cluster"]
 
     events = [
       "protected_branch.create",
@@ -964,7 +964,7 @@ module "unauthorized_users_modify_repository_settings_repo_changes_modernisation
   alarm_description = "Alarm for repository settings changes in the repository"
   metric_name       = "RepositorySettingsChangeEvents-modernisation-platform-terraform-ecs-cluster"
   metric_filter_pattern = {
-    repositories = ["ministryofjustice/modernisation-platform-ami-builds"]
+    repositories = ["ministryofjustice/modernisation-platform-terraform-ecs-cluster"]
 
     events = [
       "repo.add_member",
@@ -986,7 +986,7 @@ module "unauthorized_users_modify_repository_settings_visibility_modernisation_p
   alarm_description = "Alarm for visibility and access control changes in the repository"
   metric_name       = "VisibilityAccessControlChangeEvents-modernisation-platform-terraform-ecs-cluster"
   metric_filter_pattern = {
-    repositories = ["ministryofjustice/modernisation-platform-ami-builds"]
+    repositories = ["ministryofjustice/modernisation-platform-terraform-ecs-cluster"]
 
     events = [
       "repository_visibility_change.disable",
@@ -1004,7 +1004,7 @@ module "unauthorized_users_modify_repository_settings_security_modernisation_pla
   alarm_description = "Alarm for security scanning and vulnerabilities changes in the repository"
   metric_name       = "SecurityScanningVulnerabilitiesChangeEvents-modernisation-platform-terraform-ecs-cluster"
   metric_filter_pattern = {
-    repositories = ["ministryofjustice/modernisation-platform-ami-builds"]
+    repositories = ["ministryofjustice/modernisation-platform-terraform-ecs-cluster"]
 
     events = [
       "repository_security_configuration.removed",
@@ -1028,7 +1028,7 @@ module "unauthorized_users_modify_repository_settings_admin_privileges_modernisa
   alarm_description = "Alarm for administrative privilege changes in the repository"
   metric_name       = "AdminPrivilegesChangeEvents-modernisation-platform-terraform-ecs-cluster"
   metric_filter_pattern = {
-    repositories = ["ministryofjustice/modernisation-platform-ami-builds"]
+    repositories = ["ministryofjustice/modernisation-platform-terraform-ecs-cluster"]
 
     events = [
       "business.add_admin",
@@ -1048,7 +1048,7 @@ module "unauthorized_users_modify_repository_settings_audit_log_modernisation_pl
   alarm_description = "Alarm for audit log modifications in the repository"
   metric_name       = "AuditLogModificationEvents-modernisation-platform-terraform-ecs-cluster"
   metric_filter_pattern = {
-    repositories = ["ministryofjustice/modernisation-platform-ami-builds"]
+    repositories = ["ministryofjustice/modernisation-platform-terraform-ecs-cluster"]
 
     events = [
       "audit_log_streaming.create",
@@ -1069,7 +1069,7 @@ module "unauthorized_users_modify_repository_settings_branch_protection_modernis
   alarm_description = "Alarm for branch protection rule modifications in the repository"
   metric_name       = "BranchProtectionRuleModificationEvents-modernisation-platform-terraform-s3-bucket"
   metric_filter_pattern = {
-    repositories = ["ministryofjustice/modernisation-platform-ami-builds"]
+    repositories = ["ministryofjustice/modernisation-platform-terraform-s3-bucket"]
 
     events = [
       "protected_branch.create",
@@ -1096,7 +1096,7 @@ module "unauthorized_users_modify_repository_settings_repo_changes_modernisation
   alarm_description = "Alarm for repository settings changes in the repository"
   metric_name       = "RepositorySettingsChangeEvents-modernisation-platform-terraform-s3-bucket"
   metric_filter_pattern = {
-    repositories = ["ministryofjustice/modernisation-platform-ami-builds"]
+    repositories = ["ministryofjustice/modernisation-platform-terraform-s3-bucket"]
 
     events = [
       "repo.add_member",
@@ -1118,7 +1118,7 @@ module "unauthorized_users_modify_repository_settings_visibility_modernisation_p
   alarm_description = "Alarm for visibility and access control changes in the repository"
   metric_name       = "VisibilityAccessControlChangeEvents-modernisation-platform-terraform-s3-bucket"
   metric_filter_pattern = {
-    repositories = ["ministryofjustice/modernisation-platform-ami-builds"]
+    repositories = ["ministryofjustice/modernisation-platform-terraform-s3-bucket"]
 
     events = [
       "repository_visibility_change.disable",
@@ -1136,7 +1136,7 @@ module "unauthorized_users_modify_repository_settings_security_modernisation_pla
   alarm_description = "Alarm for security scanning and vulnerabilities changes in the repository"
   metric_name       = "SecurityScanningVulnerabilitiesChangeEvents-modernisation-platform-terraform-s3-bucket"
   metric_filter_pattern = {
-    repositories = ["ministryofjustice/modernisation-platform-ami-builds"]
+    repositories = ["ministryofjustice/modernisation-platform-terraform-s3-bucket"]
 
     events = [
       "repository_security_configuration.removed",
@@ -1160,7 +1160,7 @@ module "unauthorized_users_modify_repository_settings_admin_privileges_modernisa
   alarm_description = "Alarm for administrative privilege changes in the repository"
   metric_name       = "AdminPrivilegesChangeEvents-modernisation-platform-terraform-s3-bucket"
   metric_filter_pattern = {
-    repositories = ["ministryofjustice/modernisation-platform-ami-builds"]
+    repositories = ["ministryofjustice/modernisation-platform-terraform-s3-bucket"]
 
     events = [
       "business.add_admin",
@@ -1180,7 +1180,7 @@ module "unauthorized_users_modify_repository_settings_audit_log_modernisation_pl
   alarm_description = "Alarm for audit log modifications in the repository"
   metric_name       = "AuditLogModificationEvents-modernisation-platform-terraform-s3-bucket"
   metric_filter_pattern = {
-    repositories = ["ministryofjustice/modernisation-platform-ami-builds"]
+    repositories = ["ministryofjustice/modernisation-platform-terraform-s3-bucket"]
 
     events = [
       "audit_log_streaming.create",
@@ -1201,7 +1201,7 @@ module "unauthorized_users_modify_repository_settings_branch_protection_modernis
   alarm_description = "Alarm for branch protection rule modifications in the repository"
   metric_name       = "BranchProtectionRuleModificationEvents-modernisation-platform-terraform-aws-vm-import"
   metric_filter_pattern = {
-    repositories = ["ministryofjustice/modernisation-platform-ami-builds"]
+    repositories = ["ministryofjustice/modernisation-platform-terraform-aws-vm-import"]
 
     events = [
       "protected_branch.create",
@@ -1228,7 +1228,7 @@ module "unauthorized_users_modify_repository_settings_repo_changes_modernisation
   alarm_description = "Alarm for repository settings changes in the repository"
   metric_name       = "RepositorySettingsChangeEvents-modernisation-platform-terraform-aws-vm-import"
   metric_filter_pattern = {
-    repositories = ["ministryofjustice/modernisation-platform-ami-builds"]
+    repositories = ["ministryofjustice/modernisation-platform-terraform-aws-vm-import"]
 
     events = [
       "repo.add_member",
@@ -1250,7 +1250,7 @@ module "unauthorized_users_modify_repository_settings_visibility_modernisation_p
   alarm_description = "Alarm for visibility and access control changes in the repository"
   metric_name       = "VisibilityAccessControlChangeEvents-modernisation-platform-terraform-aws-vm-import"
   metric_filter_pattern = {
-    repositories = ["ministryofjustice/modernisation-platform-ami-builds"]
+    repositories = ["ministryofjustice/modernisation-platform-terraform-aws-vm-import"]
 
     events = [
       "repository_visibility_change.disable",
@@ -1268,7 +1268,7 @@ module "unauthorized_users_modify_repository_settings_security_modernisation_pla
   alarm_description = "Alarm for security scanning and vulnerabilities changes in the repository"
   metric_name       = "SecurityScanningVulnerabilitiesChangeEvents-modernisation-platform-terraform-aws-vm-import"
   metric_filter_pattern = {
-    repositories = ["ministryofjustice/modernisation-platform-ami-builds"]
+    repositories = ["ministryofjustice/modernisation-platform-terraform-aws-vm-import"]
 
     events = [
       "repository_security_configuration.removed",
@@ -1292,7 +1292,7 @@ module "unauthorized_users_modify_repository_settings_admin_privileges_modernisa
   alarm_description = "Alarm for administrative privilege changes in the repository"
   metric_name       = "AdminPrivilegesChangeEvents--modernisation-platform-terraform-aws-vm-import"
   metric_filter_pattern = {
-    repositories = ["ministryofjustice/modernisation-platform-ami-builds"]
+    repositories = ["ministryofjustice/modernisation-platform-terraform-aws-vm-import"]
 
     events = [
       "business.add_admin",
@@ -1312,7 +1312,7 @@ module "unauthorized_users_modify_repository_settings_audit_log_modernisation_pl
   alarm_description = "Alarm for audit log modifications in the repository"
   metric_name       = "AuditLogModificationEvents-modernisation-platform-terraform-aws-vm-import"
   metric_filter_pattern = {
-    repositories = ["ministryofjustice/modernisation-platform-ami-builds"]
+    repositories = ["ministryofjustice/modernisation-platform-terraform-aws-vm-import"]
 
     events = [
       "audit_log_streaming.create",
@@ -1333,7 +1333,7 @@ module "unauthorized_users_modify_repository_settings_branch_protection_modernis
   alarm_description = "Alarm for branch protection rule modifications in the repository"
   metric_name       = "BranchProtectionRuleModificationEvents-modernisation-platform-terraform-pagerduty-integration"
   metric_filter_pattern = {
-    repositories = ["ministryofjustice/modernisation-platform-ami-builds"]
+    repositories = ["ministryofjustice/modernisation-platform-terraform-pagerduty-integration"]
 
     events = [
       "protected_branch.create",
@@ -1360,7 +1360,7 @@ module "unauthorized_users_modify_repository_settings_repo_changes_modernisation
   alarm_description = "Alarm for repository settings changes in the repository"
   metric_name       = "RepositorySettingsChangeEvents-modernisation-platform-terraform-pagerduty-integration"
   metric_filter_pattern = {
-    repositories = ["ministryofjustice/modernisation-platform-ami-builds"]
+    repositories = ["ministryofjustice/modernisation-platform-terraform-pagerduty-integration"]
 
     events = [
       "repo.add_member",
@@ -1382,7 +1382,7 @@ module "unauthorized_users_modify_repository_settings_visibility_modernisation_p
   alarm_description = "Alarm for visibility and access control changes in the repository"
   metric_name       = "VisibilityAccessControlChangeEvents-modernisation-platform-terraform-pagerduty-integration"
   metric_filter_pattern = {
-    repositories = ["ministryofjustice/modernisation-platform-ami-builds"]
+    repositories = ["ministryofjustice/modernisation-platform-terraform-pagerduty-integration"]
 
     events = [
       "repository_visibility_change.disable",
@@ -1400,7 +1400,7 @@ module "unauthorized_users_modify_repository_settings_security_modernisation_pla
   alarm_description = "Alarm for security scanning and vulnerabilities changes in the repository"
   metric_name       = "SecurityScanningVulnerabilitiesChangeEvents-modernisation-platform-terraform-pagerduty-integration"
   metric_filter_pattern = {
-    repositories = ["ministryofjustice/modernisation-platform-ami-builds"]
+    repositories = ["ministryofjustice/modernisation-platform-terraform-pagerduty-integration"]
 
     events = [
       "repository_security_configuration.removed",
@@ -1424,7 +1424,7 @@ module "unauthorized_users_modify_repository_settings_admin_privileges_modernisa
   alarm_description = "Alarm for administrative privilege changes in the repository"
   metric_name       = "AdminPrivilegesChangeEvents--modernisation-platform-terraform-pagerduty-integration"
   metric_filter_pattern = {
-    repositories = ["ministryofjustice/modernisation-platform-ami-builds"]
+    repositories = ["ministryofjustice/modernisation-platform-terraform-pagerduty-integration"]
 
     events = [
       "business.add_admin",
@@ -1444,7 +1444,7 @@ module "unauthorized_users_modify_repository_settings_audit_log_modernisation_pl
   alarm_description = "Alarm for audit log modifications in the repository"
   metric_name       = "AuditLogModificationEvents-modernisation-platform-terraform-pagerduty-integration"
   metric_filter_pattern = {
-    repositories = ["ministryofjustice/modernisation-platform-ami-builds"]
+    repositories = ["ministryofjustice/modernisation-platform-terraform-pagerduty-integration"]
 
     events = [
       "audit_log_streaming.create",
