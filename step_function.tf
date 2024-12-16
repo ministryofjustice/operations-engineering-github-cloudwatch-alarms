@@ -8,7 +8,7 @@ resource "aws_sfn_state_machine" "logs_insights_workflow" {
     "States" : {
       "StartQuery" : {
         "Type" : "Task",
-        "Resource" : "arn:aws:states:::aws-sdk:logs:startQuery",
+        "Resource" : "arn:aws:states:::aws-sdk:cloudwatchlogs:startQuery",
         "Parameters" : {
           "logGroupName" : "$.logGroupName",
           "startTime" : "$.startTime",
@@ -24,7 +24,7 @@ resource "aws_sfn_state_machine" "logs_insights_workflow" {
       },
       "GetQueryResults" : {
         "Type" : "Task",
-        "Resource" : "arn:aws:states:::aws-sdk:logs:getQueryResults",
+        "Resource" : "arn:aws:states:::aws-sdk:cloudwatchlogs:getQueryResults",
         "Parameters" : {
           "queryId.$" : "$.queryId"
         },
