@@ -25,6 +25,11 @@ variable "sns_topic_arn" {
   description = "arn for sns topic"
 }
 
+variable "sfn_arn" {
+  type = string
+  description = "arn for step function"
+}
+
 variable "metric_filter_pattern" {
   type = object({
     usernames_equal_to    = optional(list(string), [])

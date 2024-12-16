@@ -12,7 +12,7 @@ locals {
   concatenated_filters = join(" && ", local.remove_empty_filters)
 }
 
-resource "aws_cloudwatch_log_metric_filter" "levgorbunov1_cancel_workflow_filter" {
+resource "aws_cloudwatch_log_metric_filter" "default" {
   name           = var.metric_name
   log_group_name = data.aws_cloudwatch_log_group.github_events_log_group.name
 
@@ -25,12 +25,12 @@ resource "aws_cloudwatch_log_metric_filter" "levgorbunov1_cancel_workflow_filter
   }
 }
 
-resource "aws_cloudwatch_metric_alarm" "levgorbunov1_cancel_workflow_alarm" {
+resource "aws_cloudwatch_metric_alarm" "default" {
   alarm_name        = "${var.metric_name}Alarm"
   alarm_description = var.alarm_description
 
-  metric_name = aws_cloudwatch_log_metric_filter.levgorbunov1_cancel_workflow_filter.metric_transformation[0].name
-  namespace   = aws_cloudwatch_log_metric_filter.levgorbunov1_cancel_workflow_filter.metric_transformation[0].namespace
+  metric_name = aws_cloudwatch_log_metric_filter.default.metric_transformation[0].name
+  namespace   = aws_cloudwatch_log_metric_filter.default.metric_transformation[0].namespace
 
   comparison_operator = "GreaterThanThreshold"
   evaluation_periods  = 1
@@ -38,5 +38,5 @@ resource "aws_cloudwatch_metric_alarm" "levgorbunov1_cancel_workflow_alarm" {
   statistic           = "Sum"
   threshold           = var.threshold
 
-  alarm_actions = [var.sns_topic_arn]
+  alarm_actions = []
 }
