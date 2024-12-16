@@ -4,15 +4,25 @@ resource "aws_sfn_state_machine" "logs_insights_workflow" {
 
   definition = jsonencode({
     "Comment" : "Query CloudWatch Logs Insights and send results to SNS",
-    "StartAt" : "StartQuery",
+    "StartAt" : "ConvertTime",
     "States" : {
+      "ConvertTime": {
+        "Type": "Pass",
+        "Result": {
+            "timeString": "$.time",
+            "startTime": "$$.Timestamp - $.period",
+            "endTime": "$$.Timestamp"
+        },
+        "ResultPath": "$.timeResult",
+        "Next": "StartQuery"
+      },
       "StartQuery" : {
         "Type" : "Task",
         "Resource" : "arn:aws:states:::aws-sdk:cloudwatchlogs:startQuery",
         "Parameters" : {
           "LogGroupName" : "$.logGroupName",
-          "StartTime" : "$.startTime",
-          "EndTime" : "$.endTime",
+          "StartTime" : "$.timeResult.startTime",
+          "EndTime" : "$.timeResult.endTime",
           "QueryString" : "$.queryString"
         },
         "Next" : "WaitForQuery"
