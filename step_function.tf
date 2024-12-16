@@ -10,10 +10,10 @@ resource "aws_sfn_state_machine" "logs_insights_workflow" {
         "Type" : "Task",
         "Resource" : "arn:aws:states:::aws-sdk:cloudwatchlogs:startQuery",
         "Parameters" : {
-          "logGroupName" : "$.logGroupName",
-          "startTime" : "$.startTime",
-          "endTime" : "$.endTime",
-          "queryString" : "$.queryString"
+          "LogGroupName" : "$.logGroupName",
+          "StartTime" : "$.startTime",
+          "EndTime" : "$.endTime",
+          "QueryString" : "$.queryString"
         },
         "Next" : "WaitForQuery"
       },
@@ -26,7 +26,7 @@ resource "aws_sfn_state_machine" "logs_insights_workflow" {
         "Type" : "Task",
         "Resource" : "arn:aws:states:::aws-sdk:cloudwatchlogs:getQueryResults",
         "Parameters" : {
-          "queryId.$" : "$.queryId"
+          "QueryId.$" : "$.queryId"
         },
         "Next" : "PublishToSNS"
       },
