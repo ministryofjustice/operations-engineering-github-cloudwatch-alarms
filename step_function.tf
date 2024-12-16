@@ -3,41 +3,41 @@ resource "aws_sfn_state_machine" "logs_insights_workflow" {
   role_arn = aws_iam_role.sfn_execution_role.arn
 
   definition = jsonencode({
-    "Comment": "Query CloudWatch Logs Insights and send results to SNS",
-    "StartAt": "StartQuery",
-    "States": {
-      "StartQuery": {
-        "Type": "Task",
-        "Resource": "arn:aws:states:::aws-sdk:logs:startQuery",
-        "Parameters": {
-          "logGroupName": "$.logGroupName",
-          "startTime":  "$.startTime",
-          "endTime":    "$.endTime",
-          "queryString": "$.queryString"
+    "Comment" : "Query CloudWatch Logs Insights and send results to SNS",
+    "StartAt" : "StartQuery",
+    "States" : {
+      "StartQuery" : {
+        "Type" : "Task",
+        "Resource" : "arn:aws:states:::aws-sdk:logs:startQuery",
+        "Parameters" : {
+          "logGroupName" : "$.logGroupName",
+          "startTime" : "$.startTime",
+          "endTime" : "$.endTime",
+          "queryString" : "$.queryString"
         },
-        "Next": "WaitForQuery"
+        "Next" : "WaitForQuery"
       },
-      "WaitForQuery": {
-        "Type": "Wait",
-        "Seconds": 10,
-        "Next": "GetQueryResults"
+      "WaitForQuery" : {
+        "Type" : "Wait",
+        "Seconds" : 10,
+        "Next" : "GetQueryResults"
       },
-      "GetQueryResults": {
-        "Type": "Task",
-        "Resource": "arn:aws:states:::aws-sdk:logs:getQueryResults",
-        "Parameters": {
-          "queryId.$": "$.queryId"
+      "GetQueryResults" : {
+        "Type" : "Task",
+        "Resource" : "arn:aws:states:::aws-sdk:logs:getQueryResults",
+        "Parameters" : {
+          "queryId.$" : "$.queryId"
         },
-        "Next": "PublishToSNS"
+        "Next" : "PublishToSNS"
       },
-      "PublishToSNS": {
-        "Type": "Task",
-        "Resource": "arn:aws:states:::aws-sdk:sns:publish",
-        "Parameters": {
-          "TopicArn.$": "$.snsTopicArn",
-          "Message.$": "States.JsonToString($.queryResults)"
+      "PublishToSNS" : {
+        "Type" : "Task",
+        "Resource" : "arn:aws:states:::aws-sdk:sns:publish",
+        "Parameters" : {
+          "TopicArn.$" : "$.snsTopicArn",
+          "Message.$" : "States.JsonToString($.queryResults)"
         },
-        "End": true
+        "End" : true
       }
     }
   })
@@ -47,13 +47,13 @@ resource "aws_iam_role" "sfn_execution_role" {
   name = "step-functions-logs-query-role"
 
   assume_role_policy = jsonencode({
-    "Version": "2012-10-17",
-    "Statement": [
+    "Version" : "2012-10-17",
+    "Statement" : [
       {
-        "Action": "sts:AssumeRole",
-        "Effect": "Allow",
-        "Principal": {
-          "Service": "states.amazonaws.com"
+        "Action" : "sts:AssumeRole",
+        "Effect" : "Allow",
+        "Principal" : {
+          "Service" : "states.amazonaws.com"
         }
       }
     ]
@@ -61,24 +61,24 @@ resource "aws_iam_role" "sfn_execution_role" {
 }
 
 resource "aws_iam_policy" "sfn_policy" {
-  name   = "step-functions-logs-query-policy"
+  name = "step-functions-logs-query-policy"
   policy = jsonencode({
-    "Version": "2012-10-17",
-    "Statement": [
+    "Version" : "2012-10-17",
+    "Statement" : [
       {
-        "Effect": "Allow",
-        "Action": [
+        "Effect" : "Allow",
+        "Action" : [
           "logs:StartQuery",
           "logs:GetQueryResults",
           "logs:DescribeLogGroups",
           "logs:DescribeLogStreams"
         ],
-        "Resource": "*"
+        "Resource" : "*"
       },
       {
-        "Effect": "Allow",
-        "Action": "sns:Publish",
-        "Resource": "*"
+        "Effect" : "Allow",
+        "Action" : "sns:Publish",
+        "Resource" : "*"
       }
     ]
   })
