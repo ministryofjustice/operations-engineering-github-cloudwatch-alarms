@@ -2,7 +2,6 @@ module "levgorbunov1_cancel_workflow_alarm" {
   source = "./modules/alarm"
 
   sns_topic_arn = module.operations_engineering_topic.sns_topic_arn
-  sfn_arn       = aws_sfn_state_machine.logs_insights_workflow.arn
 
   alarm_description = "Alarm for when user levgorbunov1 cancels any GitHub Actions workflow"
 
@@ -17,7 +16,6 @@ module "unauthorised_users_modify_repository_settings_alarm" {
   source = "./modules/alarm"
 
   sns_topic_arn = module.operations_engineering_topic.sns_topic_arn
-  sfn_arn       = aws_sfn_state_machine.logs_insights_workflow.arn
 
   alarm_description = "Alarm for when any user other than testuser1 modifies the settings of ministryofjustice/operations-engineering-github-cloudwatch-alarms repository"
 

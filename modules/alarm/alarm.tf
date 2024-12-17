@@ -14,7 +14,7 @@ locals {
 
 resource "aws_cloudwatch_log_metric_filter" "default" {
   name           = var.metric_name
-  log_group_name = data.aws_cloudwatch_log_group.github_events_log_group.name
+  log_group_name = var.log_group_name
 
   pattern = "{ ${local.concatenated_filters} }"
 

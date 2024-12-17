@@ -17,6 +17,6 @@ jobs:
       terraform_version: "1.6.6"
       name: "CloudWatch Alarms"
     secrets:
-      iam_role: ${{ secrets.AWS_DSD_CLOUDWATCH_ROLE_ARN }}
+      iam_role: ${{ secrets.AWS_DSD_CICD_ADMIN_ROLE_ARN }}
       repo_github_token: ${{ secrets.GITHUB_TOKEN }}
       slack_webhook_url: ${{ secrets.SLACK_WEBHOOK_URL }}

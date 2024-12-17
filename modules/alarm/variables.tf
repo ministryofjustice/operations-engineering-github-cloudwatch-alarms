@@ -25,9 +25,10 @@ variable "sns_topic_arn" {
   description = "arn for sns topic"
 }
 
-variable "sfn_arn" {
+variable "log_group_name" {
   type = string
-  description = "arn for step function"
+  description = "name of GitHub audit log events CloudWath log group"
+  default = "/aws/lambda/GitHubIngestFunction"
 }
 
 variable "metric_filter_pattern" {
