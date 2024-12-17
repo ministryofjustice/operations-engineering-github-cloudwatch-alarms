@@ -18,7 +18,7 @@ resource "aws_cloudwatch_event_target" "default" {
   input     = <<EOF
     {
       "alarmName": "<$.detail.alarmName>",
-      "logGroupName": "${data.aws_cloudwatch_log_group.github_events_log_group.name}",
+      "logGroupName": "${var.log_group_name}",
       "queryString": "${aws_cloudwatch_log_metric_filter.default.pattern}",
       "snsTopicArn": "${var.sns_topic_arn}",
       "time": "<$.time>",

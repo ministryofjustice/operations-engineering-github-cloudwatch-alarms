@@ -9,7 +9,7 @@ resource "aws_lambda_function" "alarm_handler_lambda" {
   runtime       = "python3.11"
   handler       = "extract_cloudwatch_event.lambda_handler"
 
-  role     = aws_iam_role.lambda_role.arn
+  role     = aws_iam_role.alarm_handler_lambda_role.arn
   filename = data.archive_file.lambda_zip.output_path
 
   environment {
