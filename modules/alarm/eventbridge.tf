@@ -22,6 +22,6 @@ resource "aws_cloudwatch_event_target" "default" {
     queryString   = aws_cloudwatch_log_metric_filter.default.pattern,
     snsTopicArn   = var.sns_topic_arn,
     time          = "<$.time>",
-    period        = var.period
+    period        = var.period * 1000
   })
 }
