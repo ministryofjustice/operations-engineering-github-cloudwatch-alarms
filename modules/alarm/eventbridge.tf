@@ -14,7 +14,7 @@ resource "aws_cloudwatch_event_rule" "default" {
 
 resource "aws_cloudwatch_event_target" "default" {
   rule      = aws_cloudwatch_event_rule.default.name
-  arn       = data.aws_lambda_function.alarm_handler_lambda.arn
+  arn       = var.lambda_arn
   input     = <<EOF
     {
       "alarmName": "<$.detail.alarmName>",

@@ -25,6 +25,11 @@ variable "sns_topic_arn" {
   description = "arn for sns topic"
 }
 
+variable "lambda_arn" {
+  type = string
+  description = "arn for alert notification lambda"
+}
+
 variable "log_group_name" {
   type = string
   description = "name of GitHub audit log events CloudWath log group"
