@@ -9,12 +9,12 @@ resource "aws_lambda_function" "alarm_handler_lambda" {
   runtime       = "python3.11"
   handler       = "extract_cloudwatch_event.lambda_handler"
 
-  role          = aws_iam_role.lambda_role.arn
-  filename      = data.archive_file.lambda_zip.output_path
+  role     = aws_iam_role.lambda_role.arn
+  filename = data.archive_file.lambda_zip.output_path
 
   environment {
     variables = {
-      LOG_GROUP_NAME  = "/aws/lambda/GitHubIngestFunction"
+      LOG_GROUP_NAME = "/aws/lambda/GitHubIngestFunction"
     }
   }
 }
@@ -40,7 +40,7 @@ resource "aws_iam_role" "alarm_handler_lambda_role" {
 resource "aws_iam_policy" "alarm_handler_lambda_policy" {
   name        = "lambda-cloudwatch-sns-policy"
   description = "Policy for Lambda to access CloudWatch Logs and SNS"
-  policy      = jsonencode({
+  policy = jsonencode({
     Version = "2012-10-17",
     Statement = [
       {
