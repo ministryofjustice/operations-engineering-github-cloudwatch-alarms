@@ -5,6 +5,7 @@ resource "aws_cloudwatch_event_rule" "default" {
     "source": ["aws.cloudwatch"],
     "detail-type": ["CloudWatch Alarm State Change "],
     "detail": {
+      "alarmName": ["${aws_cloudwatch_metric_alarm.default.alarm_name}"],
       "state": {
         "value": ["ALARM"]
       }
