@@ -1,5 +1,5 @@
 resource "aws_cloudwatch_event_rule" "default" {
-  name        = "alarm-state-change-rule"
+  name        = "${aws_cloudwatch_metric_alarm.default.alarm_name}-event-rule"
   description = "EventBridge rule to capture CloudWatch alarm state changes"
   event_pattern = jsonencode({
     "source": ["aws.cloudwatch"],
