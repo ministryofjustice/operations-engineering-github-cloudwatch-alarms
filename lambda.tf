@@ -4,6 +4,12 @@ data "archive_file" "lambda_zip" {
   output_path = "extract_cloudwatch_event.zip"
 }
 
+resource "aws_cloudwatch_log_group" "lambda_log_group" {
+  name              = "/aws/lambda/${aws_lambda_function.alarm_handler_lambda.function_name}"
+  retention_in_days = 7
+}
+
+
 resource "aws_lambda_function" "alarm_handler_lambda" {
   function_name = "cloudwatch_alarm_handler"
   runtime       = "python3.11"
@@ -17,6 +23,8 @@ resource "aws_lambda_function" "alarm_handler_lambda" {
       LOG_GROUP_NAME = "/aws/lambda/GitHubIngestFunction"
     }
   }
+
+  depends_on = [aws_cloudwatch_log_group.lambda_log_group]
 }
 
 resource "aws_iam_role" "alarm_handler_lambda_role" {
