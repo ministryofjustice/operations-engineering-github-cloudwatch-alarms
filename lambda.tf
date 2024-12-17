@@ -22,8 +22,6 @@ resource "aws_lambda_function" "alarm_handler_lambda" {
       LOG_GROUP_NAME = "/aws/lambda/GitHubIngestFunction"
     }
   }
-
-  depends_on = [aws_cloudwatch_log_group.lambda_log_group]
 }
 
 resource "aws_iam_role" "alarm_handler_lambda_role" {
