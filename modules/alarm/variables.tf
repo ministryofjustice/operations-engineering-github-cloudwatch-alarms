@@ -25,6 +25,17 @@ variable "sns_topic_arn" {
   description = "arn for sns topic"
 }
 
+variable "lambda_arn" {
+  type = string
+  description = "arn for alert notification lambda"
+}
+
+variable "log_group_name" {
+  type = string
+  description = "name of GitHub audit log events CloudWath log group"
+  default = "/aws/lambda/GitHubIngestFunction"
+}
+
 variable "metric_filter_pattern" {
   type = object({
     usernames_equal_to    = optional(list(string), [])

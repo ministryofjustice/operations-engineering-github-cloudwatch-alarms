@@ -26,6 +26,7 @@ module "my_alarm" {
   source = "./modules/alarm"
 
   sns_topic_arn = module.my_team_topic.sns_topic_arn
+  lambda_arn = aws_lambda_function.alarm_handler_lambda.arn
 
   alarm_description = "Describe the purpose of your alarm."
 
