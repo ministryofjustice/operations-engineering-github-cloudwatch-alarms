@@ -15,7 +15,7 @@ def lambda_handler(event, context):
     try:
         logger.info("Querying CloudWatch logs")
 
-        time_now = int(datetime.utcnow().timestamp())
+        time_now = int(datetime.utcnow().timestamp()) * 1000
 
         query = {
             "logGroupName": os.environ['LOG_GROUP_NAME'],
