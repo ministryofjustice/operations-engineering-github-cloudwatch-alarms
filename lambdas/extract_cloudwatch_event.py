@@ -34,8 +34,8 @@ def lambda_handler(event, context):
         return {"statusCode": 500, "body": f"Error fetching log events: {e}"}
     
     events = response.get('events', [])
-    message = "\n".join([event['message'] for event in events])
-    final_message = f"CloudWatch Alarm Triggered. Log Events:\n{message}"
+    message = "\n\n".join([event['message'] for event in events])
+    final_message = f"CloudWatch Alarm Triggered. Log Events:\n\n{message}"
 
     if not events:
         logger.info("No log events found.")
