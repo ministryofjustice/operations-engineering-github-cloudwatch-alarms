@@ -49,11 +49,7 @@ resource "aws_iam_policy" "alarm_handler_lambda_policy" {
     Version = "2012-10-17",
     Statement = [
       {
-        Action = [
-          "logs:StartQuery",
-          "logs:GetQueryResults",
-          "logs:FilterLogEvents"
-        ],
+        Action   = ["logs:*"],
         Resource = "*",
         Effect   = "Allow"
       },
