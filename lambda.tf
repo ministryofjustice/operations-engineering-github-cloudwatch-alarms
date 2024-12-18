@@ -25,6 +25,14 @@ resource "aws_lambda_function" "alarm_handler_lambda" {
   }
 }
 
+resource "aws_lambda_permission" "allow_event_rule" {
+  statement_id  = "AllowExecutionFromEventRule"
+  action        = "lambda:InvokeFunction"
+  function_name = aws_lambda_function.alarm_handler_lambda.function_name
+  principal     = "events.amazonaws.com"
+  source_arn    = "arn:aws:events:eu-west-2:880656497252:rule/*"
+}
+
 resource "aws_iam_role" "alarm_handler_lambda_role" {
   name = "alarm_handler_lambda_role"
 
