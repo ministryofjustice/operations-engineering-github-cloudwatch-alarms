@@ -8,14 +8,6 @@ logger.setLevel(logging.INFO)
 logs_client = boto3.client('logs')
 sns_client = boto3.client('sns')
 
-def convert_time(iso_time):
-    try:
-        dt = datetime.datetime.fromisoformat(iso_time.replace('Z', '+00:00'))
-        return int(dt.timestamp() * 1000)
-    except Exception as e:
-        logger.error(f"Error converting time: {e}")
-        return {"statusCode": 500, "body": f"Error converting time: {e}"}
-
 def lambda_handler(event, context):
     logger.info("Starting processing...")
     logger.info(f"Event: {event}")
@@ -23,11 +15,13 @@ def lambda_handler(event, context):
     try:
         logger.info("Querying CloudWatch logs")
 
+        time_now = int(datetime.utcnow().timestamp())
+
         query = {
             "logGroupName": os.environ['LOG_GROUP_NAME'],
             "filterPattern": event['queryString'],
-            "startTime": convert_time(event['time']) - int(event['period']),
-            "endTime": convert_time(event['time']),
+            "startTime": time_now - int(event['period']),
+            "endTime": time_now,
         }
 
         logger.info(f"Query: {query}")
