@@ -1,6 +1,6 @@
 import boto3
 import os
-import datetime
+from datetime import datetime
 import logging
 
 logger = logging.getLogger()
