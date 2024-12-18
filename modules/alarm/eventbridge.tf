@@ -13,19 +13,6 @@ resource "aws_cloudwatch_event_rule" "default" {
   })
 }
 
-# resource "aws_cloudwatch_event_target" "default" {
-#   rule      = aws_cloudwatch_event_rule.default.name
-#   arn       = var.lambda_arn
-#   input     = jsonencode({
-#     alarmName     = aws_cloudwatch_metric_alarm.default.alarm_name,
-#     logGroupName  = var.log_group_name,
-#     queryString   = aws_cloudwatch_log_metric_filter.default.pattern,
-#     snsTopicArn   = var.sns_topic_arn,
-#     time          = "$.time",
-#     period        = var.period * 1000
-#   })
-# }
-
 resource "aws_cloudwatch_event_target" "default" {
   rule = aws_cloudwatch_event_rule.default.name
   arn  = var.lambda_arn
@@ -38,10 +25,10 @@ resource "aws_cloudwatch_event_target" "default" {
     input_template = jsonencode({
       alarmName     = aws_cloudwatch_metric_alarm.default.alarm_name,
       logGroupName  = var.log_group_name,
-      # queryString   = aws_cloudwatch_log_metric_filter.default.pattern,
       snsTopicArn   = var.sns_topic_arn,
       time          = "<time>",
       period        = var.period * 1000
+      queryString   = aws_cloudwatch_log_metric_filter.default.pattern,
     })
   }
 }
