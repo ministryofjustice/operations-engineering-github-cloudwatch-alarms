@@ -8,6 +8,8 @@ logger.setLevel(logging.INFO)
 logs_client = boto3.client('logs')
 sns_client = boto3.client('sns')
 
+logger.info("Lambda ready")
+
 def convert_time(iso_time):
     try:
         dt = datetime.datetime.fromisoformat(iso_time.replace('Z', '+00:00'))
@@ -16,8 +18,6 @@ def convert_time(iso_time):
         return {"statusCode": 500, "body": f"Error converting time: {e}"}
 
 def lambda_handler(event, context):
-    logger.info("Lambda ready")
-
     try:
         response = logs_client.filter_log_events(
             logGroupName=os.environ['LOG_GROUP_NAME'],
