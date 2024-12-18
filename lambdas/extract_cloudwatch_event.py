@@ -20,7 +20,7 @@ def lambda_handler(event, context):
         query = {
             "logGroupName": os.environ['LOG_GROUP_NAME'],
             "filterPattern": event['queryString'],
-            "startTime": time_now - int(event['period']),
+            "startTime": time_now - (int(event['period']) + 60000),
             "endTime": time_now,
         }
 
