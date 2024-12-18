@@ -14,14 +14,24 @@ resource "aws_cloudwatch_event_rule" "default" {
 }
 
 resource "aws_cloudwatch_event_target" "default" {
-  rule      = aws_cloudwatch_event_rule.default.name
-  arn       = var.lambda_arn
-  input     = jsonencode({
-    alarmName     = "$.detail.alarmName",
-    logGroupName  = var.log_group_name,
-    queryString   = aws_cloudwatch_log_metric_filter.default.pattern,
-    snsTopicArn   = var.sns_topic_arn,
-    time          = "$.time",
-    period        = var.period * 1000
-  })
+  rule = aws_cloudwatch_event_rule.default.name
+  arn  = var.lambda_arn
+
+  input_transformer {
+    input_paths = {
+      alarmName    = "$.detail.alarmName"
+      time         = "$.time"
+    }
+
+    input_template = <<TEMPLATE
+{
+  "alarmName": <alarmName>,
+  "logGroupName": "${var.log_group_name}",
+  "queryString": "${aws_cloudwatch_log_metric_filter.default.pattern}",
+  "snsTopicArn": "${var.sns_topic_arn}",
+  "time": <time>,
+  "period": ${var.period * 1000}
+}
+TEMPLATE
+  }
 }
