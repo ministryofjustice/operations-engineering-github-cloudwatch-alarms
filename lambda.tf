@@ -25,7 +25,7 @@ resource "aws_lambda_function" "alarm_handler_lambda" {
   }
 }
 
-resource "aws_lambda_permission" "allow_event_rule" {
+resource "aws_lambda_permission" "allow_all_event_rule" {
   statement_id  = "AllowExecutionFromEventRule"
   action        = "lambda:InvokeFunction"
   function_name = aws_lambda_function.alarm_handler_lambda.function_name
