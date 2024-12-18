@@ -19,18 +19,17 @@ resource "aws_cloudwatch_event_target" "default" {
 
   input_transformer {
     input_paths = {
-      alarmName    = "$.detail.alarmName"
-      time         = "$.time"
+      time         = "test"
     }
 
     input_template = <<TEMPLATE
 {
-  "alarmName": <alarmName>,
+  "alarmName": ${aws_cloudwatch_metric_alarm.default.alarm_name},
   "logGroupName": "${var.log_group_name}",
   "snsTopicArn": "${var.sns_topic_arn}",
   "time": <time>,
   "period": ${var.period * 1000},
-  "queryString": "{ ( $.userIdentity.principalId = \\\"levgorbunov1\\\" ) && ( $.eventName = \\\"workflows.cancel_workflow_run\\\" ) }",
+  "queryString": "${aws_cloudwatch_log_metric_filter.default.pattern}",
 }
 TEMPLATE
   }
