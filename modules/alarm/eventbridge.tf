@@ -30,7 +30,7 @@ resource "aws_cloudwatch_event_target" "default" {
   "snsTopicArn": "${var.sns_topic_arn}",
   "time": <time>,
   "period": ${var.period * 1000},
-  "queryString": "${replace(aws_cloudwatch_log_metric_filter.default.pattern, "\"", "\\\"")}",
+  "queryString": "\${replace(aws_cloudwatch_log_metric_filter.default.pattern, "\"", "\\\"")}\",
 }
 TEMPLATE
   }
