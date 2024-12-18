@@ -17,11 +17,11 @@ resource "aws_cloudwatch_event_target" "default" {
   rule      = aws_cloudwatch_event_rule.default.name
   arn       = var.lambda_arn
   input     = jsonencode({
-    alarmName     = "<$.detail.alarmName>",
+    alarmName     = "$.detail.alarmName",
     logGroupName  = var.log_group_name,
     queryString   = aws_cloudwatch_log_metric_filter.default.pattern,
     snsTopicArn   = var.sns_topic_arn,
-    time          = "<$.time>",
+    time          = "$.time",
     period        = var.period * 1000
   })
 }
