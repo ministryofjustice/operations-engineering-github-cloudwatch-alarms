@@ -22,12 +22,18 @@ def lambda_handler(event, context):
 
     try:
         logger.info("Querying CloudWatch logs")
-        response = logs_client.filter_log_events(
-            logGroupName=os.environ['LOG_GROUP_NAME'],
-            filterPattern=event['queryString'],
-            startTime=convert_time(event['time']) - int(event['period']),
-            endTime=convert_time(event['time']),
-        )
+
+        query = {
+            "logGroupName": os.environ['LOG_GROUP_NAME'],
+            "filterPattern": event['queryString'],
+            "startTime": convert_time(event['time']) - int(event['period']),
+            "endTime": convert_time(event['time']),
+        }
+
+        logger.info(f"Query: {query}")
+
+        response = logs_client.filter_log_events(**query)
+
         logger.info("Finished querying CloudWatch logs")
     except Exception as e:
         logger.error(f"Error fetching log events: {e}")
