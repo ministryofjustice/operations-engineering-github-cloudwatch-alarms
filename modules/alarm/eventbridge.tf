@@ -21,17 +21,21 @@ resource "aws_cloudwatch_event_target" "default" {
     input_paths = {
       alarmName    = "$.detail.alarmName"
       time         = "$.time"
+      logGroupName = "${var.log_group_name}"
+      queryString = "${aws_cloudwatch_log_metric_filter.default.pattern}"
+      snsTopicArn = "${var.sns_topic_arn}"
+      period = var.period * 1000
     }
 
-    input_template = <<TEMPLATE
+    input_template = <<EOF
 {
   "alarmName": <alarmName>,
-  "logGroupName": "${var.log_group_name}",
-  "queryString": "${jsonencode(aws_cloudwatch_log_metric_filter.default.pattern)}",
-  "snsTopicArn": "${var.sns_topic_arn}",
+  "logGroupName": <logGroupName>,
+  "queryString": <queryString>,
+  "snsTopicArn": <snsTopicArn>,
   "time": <time>,
-  "period": ${var.period * 1000}
+  "period": <period>
 }
-TEMPLATE
+EOF
   }
 }
