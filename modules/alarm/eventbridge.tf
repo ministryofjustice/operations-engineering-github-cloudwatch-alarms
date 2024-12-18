@@ -27,7 +27,7 @@ resource "aws_cloudwatch_event_target" "default" {
 {
   "alarmName": <alarmName>,
   "logGroupName": "${var.log_group_name}",
-  "queryString": "${aws_cloudwatch_log_metric_filter.default.pattern}",
+  "queryString": "${jsonencode(aws_cloudwatch_log_metric_filter.default.pattern)}",
   "snsTopicArn": "${var.sns_topic_arn}",
   "time": <time>,
   "period": ${var.period * 1000}
