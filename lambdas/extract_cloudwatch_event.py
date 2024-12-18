@@ -1,7 +1,10 @@
 import boto3
 import os
 import datetime
+import logging
 
+logger = logging.getLogger()
+logger.setLevel(logging.INFO)
 logs_client = boto3.client('logs')
 sns_client = boto3.client('sns')
 
@@ -13,6 +16,8 @@ def convert_time(iso_time):
         return {"statusCode": 500, "body": f"Error converting time: {e}"}
 
 def lambda_handler(event, context):
+    logger.info("Lambda ready")
+
     try:
         response = logs_client.filter_log_events(
             logGroupName=os.environ['LOG_GROUP_NAME'],
